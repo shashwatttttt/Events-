@@ -1,0 +1,6 @@
+{
+  "name": "Skie Events",
+  "description": "Event applications, ticket allocations, orders, and event-night check-in platform.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
