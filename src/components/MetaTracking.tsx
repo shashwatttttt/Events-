@@ -21,19 +21,21 @@ export function MetaTracking({ pixelId, consentVersion }: { pixelId: string; con
   const excluded = pathname.startsWith("/skie-control");
 
   useEffect(() => {
-    let cancelled = false;
-    queueMicrotask(() => {
-      if (cancelled) return;
-      setPrivacyLocked(privacySignalBlocksAdvertising());
-      setChoice(readAdvertisingConsent(consentVersion)?.choice || null);
-    });
+    setPrivacyLocked(privacySignalBlocksAdvertising());
+    const existing = readAdvertisingConsent(consentVersion);
+    if (existing?.choice) {
+      setChoice(existing.choice);
+    }
     const onConsent = (event: Event) => {
       const detail = (event as CustomEvent<{ choice?: AdvertisingConsentChoice }>).detail;
-      setChoice(detail?.choice || readAdvertisingConsent(consentVersion)?.choice || null);
+      if (detail?.choice) {
+        setChoice(detail.choice);
+      } else {
+        setChoice(readAdvertisingConsent(consentVersion)?.choice || null);
+      }
     };
     window.addEventListener(META_CONSENT_EVENT, onConsent);
     return () => {
-      cancelled = true;
       window.removeEventListener(META_CONSENT_EVENT, onConsent);
     };
   }, [consentVersion]);
@@ -63,8 +65,12 @@ export function MetaTracking({ pixelId, consentVersion }: { pixelId: string; con
   const showBanner = choice === null || preferencesOpen;
 
   function decide(next: AdvertisingConsentChoice) {
-    const effective = writeAdvertisingConsent(next, consentVersion);
-    setChoice(effective);
+    try {
+      const effective = writeAdvertisingConsent(next, consentVersion);
+      setChoice(effective || next);
+    } catch {
+      setChoice(next);
+    }
     setPreferencesOpen(false);
   }
 
@@ -82,11 +88,27 @@ export function MetaTracking({ pixelId, consentVersion }: { pixelId: string; con
           </div>
           <div className="tracking-consent-actions">
             {!privacyLocked && (
-              <button className="button button-primary" type="button" onClick={() => decide("granted")}>
+              <button
+                className="button button-primary"
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  decide("granted");
+                }}
+              >
                 Accept advertising
               </button>
             )}
-            <button className="button button-ghost" type="button" onClick={() => decide("denied")}>
+            <button
+              className="button button-ghost"
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                decide("denied");
+              }}
+            >
               {privacyLocked ? "Keep tracking off" : "Reject optional tracking"}
             </button>
           </div>

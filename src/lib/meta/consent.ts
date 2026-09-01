@@ -23,20 +23,42 @@ export function readAdvertisingConsent(version: string): AdvertisingConsentRecor
   }
   try {
     const parsed = JSON.parse(localStorage.getItem(META_CONSENT_STORAGE_KEY) || "null") as AdvertisingConsentRecord | null;
-    if (!parsed || parsed.version !== version || !["granted", "denied"].includes(parsed.choice)) return null;
-    return parsed;
+    if (parsed && parsed.version === version && ["granted", "denied"].includes(parsed.choice)) {
+      return parsed;
+    }
   } catch {
-    return null;
+    // Ignore localStorage access failures in restricted iframes
   }
+
+  try {
+    if (typeof document !== "undefined" && document.cookie) {
+      const match = document.cookie.match(new RegExp(`(?:^|; )${META_CONSENT_COOKIE}=([^;]*)`));
+      if (match) {
+        const [cookieChoice, cookieVer] = decodeURIComponent(match[1]).split(".");
+        if (cookieVer === version && (cookieChoice === "granted" || cookieChoice === "denied")) {
+          return { choice: cookieChoice, version, updatedAt: new Date().toISOString() };
+        }
+      }
+    }
+  } catch {
+    // Ignore cookie read failures
+  }
+
+  return null;
 }
 
 function expireMetaCookies() {
-  const skieDomain = location.hostname === "skieevents.com" || location.hostname.endsWith(".skieevents.com")
-    ? ".skieevents.com"
-    : "";
-  for (const name of ["_fbp", "_fbc"]) {
-    document.cookie = `${name}=; Max-Age=0; Path=/; SameSite=Lax`;
-    if (skieDomain) document.cookie = `${name}=; Max-Age=0; Path=/; Domain=${skieDomain}; SameSite=Lax`;
+  try {
+    const hostname = typeof location !== "undefined" ? location.hostname : "";
+    const skieDomain = hostname === "skieevents.com" || hostname.endsWith(".skieevents.com")
+      ? ".skieevents.com"
+      : "";
+    for (const name of ["_fbp", "_fbc"]) {
+      document.cookie = `${name}=; Max-Age=0; Path=/; SameSite=Lax`;
+      if (skieDomain) document.cookie = `${name}=; Max-Age=0; Path=/; Domain=${skieDomain}; SameSite=Lax`;
+    }
+  } catch {
+    // Ignore cookie expiration failures
   }
 }
 
@@ -52,15 +74,38 @@ export function writeAdvertisingConsent(choice: AdvertisingConsentChoice, versio
     version,
     updatedAt: new Date().toISOString(),
   };
-  localStorage.setItem(META_CONSENT_STORAGE_KEY, JSON.stringify(record));
-  document.cookie = `${META_CONSENT_COOKIE}=${consentCookieValue(effectiveChoice, version)}; Max-Age=${180 * 24 * 60 * 60}; Path=/; SameSite=Lax; Secure`;
-  if (effectiveChoice === "denied") {
-    expireMetaCookies();
-    window.fbq?.("consent", "revoke");
-  } else {
-    window.fbq?.("consent", "grant");
+
+  try {
+    localStorage.setItem(META_CONSENT_STORAGE_KEY, JSON.stringify(record));
+  } catch {
+    // Ignore localStorage write failures in restricted contexts
   }
-  window.dispatchEvent(new CustomEvent(META_CONSENT_EVENT, { detail: record }));
+
+  try {
+    const isHttps = typeof location !== "undefined" && location.protocol === "https:";
+    const secureFlag = isHttps ? "; Secure" : "";
+    document.cookie = `${META_CONSENT_COOKIE}=${consentCookieValue(effectiveChoice, version)}; Max-Age=${180 * 24 * 60 * 60}; Path=/; SameSite=Lax${secureFlag}`;
+  } catch {
+    // Ignore cookie write failures
+  }
+
+  try {
+    if (effectiveChoice === "denied") {
+      expireMetaCookies();
+      window.fbq?.("consent", "revoke");
+    } else {
+      window.fbq?.("consent", "grant");
+    }
+  } catch {
+    // Ignore fbq failures
+  }
+
+  try {
+    window.dispatchEvent(new CustomEvent(META_CONSENT_EVENT, { detail: record }));
+  } catch {
+    // Ignore event dispatch failures
+  }
+
   return effectiveChoice;
 }
 

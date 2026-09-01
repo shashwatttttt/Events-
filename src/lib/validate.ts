@@ -12,12 +12,14 @@ export const signupSchema = z.object({
   phone: phoneSchema,
   instagram: instagramSchema,
   password: z.string().min(8).max(128),
-  transactionalSmsConsent: z.union([z.literal("on"), z.literal(true), z.literal(false)]).optional().transform((value) => value === "on" || value === true)
+  transactionalSmsConsent: z.union([z.literal("on"), z.literal(true), z.literal(false)]).optional().transform((value) => value === "on" || value === true),
+  recaptchaToken: z.string().max(4096).optional(),
 }).strict();
 
 export const loginSchema = z.object({
   email: emailSchema,
-  password: z.string().min(1).max(128)
+  password: z.string().min(1).max(128),
+  recaptchaToken: z.string().max(4096).optional(),
 }).strict();
 
 export const applicationPayloadSchema = z.object({
@@ -26,7 +28,8 @@ export const applicationPayloadSchema = z.object({
   answers: z.record(z.string(), z.union([z.string().max(2000), z.boolean(), z.number()])),
   termsAccepted: z.literal(true),
   privacyAccepted: z.literal(true),
-  entryAccepted: z.literal(true)
+  entryAccepted: z.literal(true),
+  recaptchaToken: z.string().max(4096).optional(),
 }).strict();
 
 const orderProductsSchema = z
@@ -138,5 +141,6 @@ export const contactSchema = z.object({
   name: z.string().trim().min(2).max(120),
   email: emailSchema,
   subject: z.string().trim().min(2).max(160),
-  message: z.string().trim().min(10).max(4000)
+  message: z.string().trim().min(10).max(4000),
+  recaptchaToken: z.string().max(4096).optional(),
 }).strict();

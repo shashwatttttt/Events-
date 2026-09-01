@@ -73,6 +73,8 @@ export const config = {
   metaConversionsApiToken,
   metaTestEventCode: (process.env.META_TEST_EVENT_CODE || "").trim(),
   metaAdsConsentVersion: (process.env.META_ADS_CONSENT_VERSION || "2026-07-30").trim(),
+  recaptchaSiteKey: (process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "").trim(),
+  recaptchaSecretKey: (process.env.RECAPTCHA_SECRET_KEY || "").trim(),
   isTest: process.env.APP_MODE !== "live",
 } as const;
 

@@ -1241,7 +1241,188 @@
   "mediaObjects": [],
   "mediaVideoAssets": [],
   "mediaProviderEvents": [],
-  "analyticsEvents": [],
+  "analyticsEvents": [
+    {
+      "id": "analytics_68bbc194822bc2a4304d050d",
+      "eventName": "ticket_scan_rejected",
+      "source": "server",
+      "deduplicationKey": "ticket_scan_rejected:local-ticket:1788285834827",
+      "eventId": "different-event",
+      "quantity": 1,
+      "safeMetadata": {
+        "result": "wrong_event"
+      },
+      "occurredAt": "2026-09-01T18:03:54.827Z",
+      "melbourneDate": "2026-09-02",
+      "retentionUntil": "2027-10-07",
+      "createdAt": "2026-09-01T18:03:54.852Z"
+    },
+    {
+      "id": "analytics_aea12b679f5113a7b854e682",
+      "eventName": "ticket_scan_accepted",
+      "source": "server",
+      "deduplicationKey": "ticket_scan_accepted:local-ticket:1788285834863",
+      "eventId": "local-event",
+      "quantity": 1,
+      "safeMetadata": {
+        "result": "valid"
+      },
+      "occurredAt": "2026-09-01T18:03:54.863Z",
+      "melbourneDate": "2026-09-02",
+      "retentionUntil": "2027-10-07",
+      "createdAt": "2026-09-01T18:03:54.866Z"
+    },
+    {
+      "id": "analytics_eecc7ed2cf0497a815431b83",
+      "eventName": "ticket_scan_rejected",
+      "source": "server",
+      "deduplicationKey": "ticket_scan_rejected:local-ticket:1788286056806",
+      "eventId": "different-event",
+      "quantity": 1,
+      "safeMetadata": {
+        "result": "wrong_event"
+      },
+      "occurredAt": "2026-09-01T18:07:36.806Z",
+      "melbourneDate": "2026-09-02",
+      "retentionUntil": "2027-10-07",
+      "createdAt": "2026-09-01T18:07:36.829Z"
+    },
+    {
+      "id": "analytics_f899c7bb17080f49ac8ede65",
+      "eventName": "ticket_scan_accepted",
+      "source": "server",
+      "deduplicationKey": "ticket_scan_accepted:local-ticket:1788286056839",
+      "eventId": "local-event",
+      "quantity": 1,
+      "safeMetadata": {
+        "result": "valid"
+      },
+      "occurredAt": "2026-09-01T18:07:36.839Z",
+      "melbourneDate": "2026-09-02",
+      "retentionUntil": "2027-10-07",
+      "createdAt": "2026-09-01T18:07:36.841Z"
+    },
+    {
+      "id": "analytics_54952442f839991060934acd",
+      "eventName": "ticket_scan_rejected",
+      "source": "server",
+      "deduplicationKey": "ticket_scan_rejected:local-ticket:1788287741855",
+      "eventId": "different-event",
+      "quantity": 1,
+      "safeMetadata": {
+        "result": "wrong_event"
+      },
+      "occurredAt": "2026-09-01T18:35:41.855Z",
+      "melbourneDate": "2026-09-02",
+      "retentionUntil": "2027-10-07",
+      "createdAt": "2026-09-01T18:35:41.879Z"
+    },
+    {
+      "id": "analytics_0ffec3b97c909d591c78c5dc",
+      "eventName": "ticket_scan_accepted",
+      "source": "server",
+      "deduplicationKey": "ticket_scan_accepted:local-ticket:1788287741888",
+      "eventId": "local-event",
+      "quantity": 1,
+      "safeMetadata": {
+        "result": "valid"
+      },
+      "occurredAt": "2026-09-01T18:35:41.888Z",
+      "melbourneDate": "2026-09-02",
+      "retentionUntil": "2027-10-07",
+      "createdAt": "2026-09-01T18:35:41.889Z"
+    },
+    {
+      "id": "analytics_61d647031005bd3e37baedd8",
+      "eventName": "ticket_scan_rejected",
+      "source": "server",
+      "deduplicationKey": "ticket_scan_rejected:local-ticket:1788287770199",
+      "eventId": "different-event",
+      "quantity": 1,
+      "safeMetadata": {
+        "result": "wrong_event"
+      },
+      "occurredAt": "2026-09-01T18:36:10.199Z",
+      "melbourneDate": "2026-09-02",
+      "retentionUntil": "2027-10-07",
+      "createdAt": "2026-09-01T18:36:10.224Z"
+    },
+    {
+      "id": "analytics_490d6f378b2c259e04bcb8a3",
+      "eventName": "ticket_scan_accepted",
+      "source": "server",
+      "deduplicationKey": "ticket_scan_accepted:local-ticket:1788287770247",
+      "eventId": "local-event",
+      "quantity": 1,
+      "safeMetadata": {
+        "result": "valid"
+      },
+      "occurredAt": "2026-09-01T18:36:10.247Z",
+      "melbourneDate": "2026-09-02",
+      "retentionUntil": "2027-10-07",
+      "createdAt": "2026-09-01T18:36:10.249Z"
+    },
+    {
+      "id": "analytics_8cfc0867ad07ab6ee6c5402c",
+      "eventName": "ticket_scan_rejected",
+      "source": "server",
+      "deduplicationKey": "ticket_scan_rejected:local-ticket:1788288525914",
+      "eventId": "different-event",
+      "quantity": 1,
+      "safeMetadata": {
+        "result": "wrong_event"
+      },
+      "occurredAt": "2026-09-01T18:48:45.914Z",
+      "melbourneDate": "2026-09-02",
+      "retentionUntil": "2027-10-07",
+      "createdAt": "2026-09-01T18:48:45.940Z"
+    },
+    {
+      "id": "analytics_518d11b1959c5e2a939b1ebc",
+      "eventName": "ticket_scan_accepted",
+      "source": "server",
+      "deduplicationKey": "ticket_scan_accepted:local-ticket:1788288525949",
+      "eventId": "local-event",
+      "quantity": 1,
+      "safeMetadata": {
+        "result": "valid"
+      },
+      "occurredAt": "2026-09-01T18:48:45.949Z",
+      "melbourneDate": "2026-09-02",
+      "retentionUntil": "2027-10-07",
+      "createdAt": "2026-09-01T18:48:45.951Z"
+    },
+    {
+      "id": "analytics_1ff89a4c0fb5f274b60b3c78",
+      "eventName": "ticket_scan_rejected",
+      "source": "server",
+      "deduplicationKey": "ticket_scan_rejected:local-ticket:1788288716217",
+      "eventId": "different-event",
+      "quantity": 1,
+      "safeMetadata": {
+        "result": "wrong_event"
+      },
+      "occurredAt": "2026-09-01T18:51:56.217Z",
+      "melbourneDate": "2026-09-02",
+      "retentionUntil": "2027-10-07",
+      "createdAt": "2026-09-01T18:51:56.243Z"
+    },
+    {
+      "id": "analytics_b652ea306d6145b3ebf8cac2",
+      "eventName": "ticket_scan_accepted",
+      "source": "server",
+      "deduplicationKey": "ticket_scan_accepted:local-ticket:1788288716254",
+      "eventId": "local-event",
+      "quantity": 1,
+      "safeMetadata": {
+        "result": "valid"
+      },
+      "occurredAt": "2026-09-01T18:51:56.254Z",
+      "melbourneDate": "2026-09-02",
+      "retentionUntil": "2027-10-07",
+      "createdAt": "2026-09-01T18:51:56.256Z"
+    }
+  ],
   "entitlementRedemptions": [],
   "adminSavedFilters": [],
   "eventLaunchReadiness": []

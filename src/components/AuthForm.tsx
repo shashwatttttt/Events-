@@ -4,6 +4,7 @@ import Link from "next/link";
 import { FormEvent, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { safeRedirectPath } from "@/lib/security/redirects";
+import { GoogleCaptcha } from "@/components/GoogleCaptcha";
 
 export function AuthForm({ mode }: { mode: "login" | "signup" }) {
   const router = useRouter();
@@ -11,6 +12,7 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
   const [busy, setBusy] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState("");
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -24,6 +26,9 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
     try {
       const form = new FormData(formElement);
       const payload = Object.fromEntries(form.entries());
+      if (captchaToken) {
+        payload.recaptchaToken = captchaToken;
+      }
 
       const response = await fetch(`/api/auth/${mode}`, {
         method: "POST",
@@ -110,6 +115,8 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
           autoComplete={mode === "login" ? "current-password" : "new-password"}
         />
       </label>
+
+      <GoogleCaptcha onVerify={setCaptchaToken} action={mode} />
 
       <button className="button button-primary" disabled={busy} type="submit">
         {busy ? "Working..." : mode === "login" ? "Log in" : "Create account"}

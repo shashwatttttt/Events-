@@ -7,6 +7,7 @@ import { applicationPayloadSchema } from "@/lib/validate";
 import { captureAnalyticsSafely } from "@/lib/analytics/store";
 import { queueMetaLead } from "@/lib/meta/conversions";
 import { readMetaRequestContext } from "@/lib/meta/request-context";
+import { verifyRecaptcha } from "@/lib/security/recaptcha";
 
 function stableAnswers(value: Record<string, unknown>) {
   return JSON.stringify(
@@ -46,6 +47,7 @@ export async function POST(request: Request) {
     await enforceRateLimit(requestKey(request, "applications", user.id), 8, 60000);
     const metaContext = readMetaRequestContext(request);
     const payload = await parseJsonRequest(request, applicationPayloadSchema, 32_768);
+    await verifyRecaptcha(payload.recaptchaToken, "application");
 
     let application;
     try {

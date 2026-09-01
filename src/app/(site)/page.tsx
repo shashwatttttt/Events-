@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { HeroSlider } from "@/components/HeroSlider";
 import { SectionHeading } from "@/components/SectionHeading";
-import { EventCard } from "@/components/EventCard";
+import { FestivalProgramExplorer } from "@/components/FestivalProgramExplorer";
 import { SponsorRail } from "@/components/SponsorRail";
 import { MediaGrid } from "@/components/MediaGrid";
 import { ReviewCard } from "@/components/ReviewCard";
@@ -25,27 +25,22 @@ export default async function HomePage() {
     <>
       <HeroSlider slides={site.heroSlides} />
 
-      {homepage.showUpcomingEvents && <section className="section section-events">
-        <div className="shell">
-          <SectionHeading
-            eyebrow={homepage.upcomingEyebrow}
-            title={homepage.upcomingTitle}
-            href="/events"
-            linkLabel={homepage.upcomingLinkLabel}
-          />
-          <div className="events-grid">
-            {upcoming.slice(0, 3).map((event, index) => (
-              <EventCard event={event} priority={event.featured || index === 1} key={event.id} />
-            ))}
+      {homepage.showUpcomingEvents && (
+        <section className="section section-events">
+          <div className="shell">
+            <SectionHeading
+              eyebrow={homepage.upcomingEyebrow}
+              title={homepage.upcomingTitle}
+              href="/events"
+              linkLabel={homepage.upcomingLinkLabel}
+            />
+            <FestivalProgramExplorer
+              events={upcoming}
+              emptyStateText={homepage.emptyEventsTitle}
+            />
           </div>
-          {!upcoming.length && (
-            <div className="empty-state">
-              <h3>{homepage.emptyEventsTitle}</h3>
-              <p>{homepage.emptyEventsBody}</p>
-            </div>
-          )}
-        </div>
-      </section>}
+        </section>
+      )}
 
       <section className="manifesto-section">
         <div className="manifesto-marquee" aria-hidden="true">

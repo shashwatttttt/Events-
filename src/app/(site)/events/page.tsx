@@ -1,4 +1,4 @@
-import { EventCard } from "@/components/EventCard";
+import { FestivalProgramExplorer } from "@/components/FestivalProgramExplorer";
 import { PageHero } from "@/components/PageHero";
 import { readPublicSiteData } from "@/lib/platform";
 import { getPagesContent } from "@/lib/site-content";
@@ -21,12 +21,10 @@ export default async function EventsPage() {
       />
       <section className="section">
         <div className="shell">
-          <div className="events-grid">
-            {events.map((event, index) => (
-              <EventCard key={event.id} event={event} priority={index === 1} />
-            ))}
-          </div>
-          {!events.length && <div className="empty-state">{pages.events.emptyState}</div>}
+          <FestivalProgramExplorer
+            events={events}
+            emptyStateText={pages.events.emptyState}
+          />
         </div>
       </section>
     </>

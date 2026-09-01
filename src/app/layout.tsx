@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { assertLiveConfiguration, config } from "@/lib/config";
 import { AnalyticsPageTracker } from "@/components/AnalyticsPageTracker";
 import { MetaTracking } from "@/components/MetaTracking";
@@ -6,6 +6,14 @@ import "./globals.css";
 import "./post-checkout.css";
 import "./meta-tracking.css";
 import "./checkout-ticket-types.css";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#050505",
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),

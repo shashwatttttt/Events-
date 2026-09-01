@@ -4,6 +4,7 @@ import { FormEvent, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { ApplicationForm } from "@/types/site";
 import { sendAnalytics } from "@/lib/analytics/client";
+import { GoogleCaptcha } from "@/components/GoogleCaptcha";
 
 export function ApplicationFormClient({
   eventId,
@@ -15,6 +16,7 @@ export function ApplicationFormClient({
   const router = useRouter();
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");
+  const [captchaToken, setCaptchaToken] = useState("");
   const started = useRef(false);
   const submittingRef = useRef(false);
 
@@ -48,6 +50,7 @@ export function ApplicationFormClient({
           termsAccepted: data.get("termsAccepted") === "on",
           privacyAccepted: data.get("privacyAccepted") === "on",
           entryAccepted: data.get("entryAccepted") === "on",
+          recaptchaToken: captchaToken || undefined,
         }),
       });
 
@@ -175,6 +178,8 @@ export function ApplicationFormClient({
           <span>I agree to the Entry Policy and venue/security instructions.</span>
         </label>
       </div>
+
+      <GoogleCaptcha onVerify={setCaptchaToken} action="application" />
 
       <button className="button button-primary" disabled={busy}>
         {busy ? "Submitting..." : "Submit application"}

@@ -8,6 +8,7 @@ import { enforceRateLimit, requestKey } from "@/lib/rate-limit";
 import { signupSchema } from "@/lib/validate";
 import { setNotificationPreferences } from "@/lib/notifications/store";
 import { sha256 } from "@/lib/security/crypto";
+import { verifyRecaptcha } from "@/lib/security/recaptcha";
 
 const SMS_CONSENT_TEXT = "Send me transactional SMS updates about applications, payments, tickets and event changes. Message rates may apply. I can turn this off in my account.";
 
@@ -18,7 +19,10 @@ export async function POST(request: Request) {
     const metaContext = readMetaRequestContext(request);
     const body = await parseJsonRequest(request, signupSchema, 8_192);
     await enforceRateLimit(requestKey(request, "auth-signup-account", body.email), 4, 900000);
-    const result = await registerCustomer(body);
+    await verifyRecaptcha(body.recaptchaToken, "signup");
+    const { recaptchaToken: _, ...signupData } = body;
+    void _;
+    const result = await registerCustomer(signupData);
     await setNotificationPreferences(result.user.id, {
       email: true,
       in_app: true,

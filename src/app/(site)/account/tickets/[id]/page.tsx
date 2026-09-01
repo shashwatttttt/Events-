@@ -3,7 +3,7 @@ import { TicketQRCode } from "@/components/TicketQRCode";
 import { readSiteData } from "@/lib/data/documents";
 import { formatEventDate, statusLabel } from "@/lib/format";
 import { getOwnedTicket } from "@/lib/operations";
-import { requireUser } from "@/lib/security/session";
+import { requirePageUser } from "@/lib/auth";
 import { createTicketUrl } from "@/lib/tickets/security";
 
 export const dynamic = "force-dynamic";
@@ -11,7 +11,7 @@ export const metadata = { title: "Ticket details" };
 
 export default async function TicketPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const user = await requireUser(["customer"]);
+  const user = await requirePageUser(`/account/tickets/${id}`, ["customer"]);
   const [site, owned] = await Promise.all([readSiteData(), getOwnedTicket(id, user.id)]);
   if (!owned) notFound();
   const { ticket, entitlements } = owned;

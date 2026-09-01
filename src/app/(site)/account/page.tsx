@@ -5,12 +5,12 @@ import { formatDateTime, moneyCents, statusLabel } from "@/lib/format";
 import { getCustomerWorkspace } from "@/lib/operations";
 import { listCustomerPostCheckoutApplications } from "@/lib/post-approval/account";
 import { customerFormTargetAt } from "@/lib/post-approval/types";
-import { requireUser } from "@/lib/security/session";
+import { requirePageUser } from "@/lib/auth";
 
 export const dynamic = "force-dynamic";
 
 export default async function AccountPage() {
-  const user = await requireUser();
+  const user = await requirePageUser("/account");
   const [workspace, postCheckoutApplications] = await Promise.all([
     getCustomerWorkspace(user.id),
     listCustomerPostCheckoutApplications(user.id),
