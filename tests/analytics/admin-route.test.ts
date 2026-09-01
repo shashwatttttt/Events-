@@ -1,0 +1,12 @@
+import { beforeEach,describe,expect,it,vi } from "vitest";
+import type { AnalyticsEvent,AnalyticsReport } from "@/types/site";
+const mocks=vi.hoisted(()=>({report:vi.fn(),events:vi.fn(),role:"admin"}));
+vi.mock("@/lib/security/session",()=>({requireUser:vi.fn(async(roles:string[])=>{if(!roles.includes(mocks.role))throw new Error("FORBIDDEN");return{id:"admin",role:mocks.role};})}));
+vi.mock("@/lib/analytics/store",async(importOriginal)=>{const original=await importOriginal<typeof import("@/lib/analytics/store")>();return{...original,analyticsReport:mocks.report,analyticsEvents:mocks.events};});
+const report:AnalyticsReport={startDate:"2026-07-01",endDate:"2026-07-31",totals:{events:1,revenueCents:2500,ticketQuantity:1},byEventType:[{eventName:"payment_completed",count:1,revenueCents:2500,quantity:1}],byDate:[{date:"2026-07-23",count:1,revenueCents:2500}]};
+const event:AnalyticsEvent={id:"analytics",eventName:"payment_completed",source:"server",deduplicationKey:"payment:one",eventId:"event-a",utmCampaign:"winter",revenueCents:2500,quantity:1,safeMetadata:{},occurredAt:"2026-07-22T14:30:00Z",melbourneDate:"2026-07-23",retentionUntil:"2027-08-27",createdAt:"2026-07-22T14:30:00Z"};
+describe("admin analytics route",()=>{beforeEach(()=>{mocks.role="admin";mocks.report.mockResolvedValue(report);mocks.events.mockResolvedValue([event]);});
+  it("returns filtered reports to admins",async()=>{const{GET}=await import("@/app/api/admin/analytics/route");const response=await GET(new Request("http://localhost/api/admin/analytics?startDate=2026-07-01&endDate=2026-07-31&eventId=event-a&campaign=winter"));expect(response.status).toBe(200);expect(await response.json()).toMatchObject({report:{totals:{revenueCents:2500}},options:{campaigns:["winter"]}});expect(mocks.report).toHaveBeenCalledWith(expect.objectContaining({eventId:"event-a",campaign:"winter"}));});
+  it("exports privacy-reduced CSV",async()=>{const{GET}=await import("@/app/api/admin/analytics/route");const response=await GET(new Request("http://localhost/api/admin/analytics?startDate=2026-07-01&endDate=2026-07-31&format=csv"));expect(response.headers.get("content-type")).toContain("text/csv");const csv=await response.text();expect(csv).toContain("Revenue cents");expect(csv).not.toContain("anonymous_session_hash");});
+  it("rejects invalid filter input",async()=>{const{GET}=await import("@/app/api/admin/analytics/route");const response=await GET(new Request("http://localhost/api/admin/analytics?eventId=../../private"));expect(response.status).toBe(422);});
+});

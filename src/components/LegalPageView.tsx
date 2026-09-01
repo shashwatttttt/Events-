@@ -1,0 +1,3 @@
+import { notFound } from "next/navigation";
+import { readLegalPage } from "@/lib/platform";
+export async function LegalPageView({slug}:{slug:string}){const page=await readLegalPage(slug);if(!page)notFound();return <><section className="page-hero legal-hero"><div className="shell"><p className="eyebrow"><span/>Policy / v{page.version}</p><h1>{page.title}</h1><p>Published {new Date(page.publishedAt).toLocaleDateString("en-AU")}</p></div></section><section className="section"><article className="shell legal-content">{page.content.split(/\n{2,}/).map(paragraph=><p key={paragraph}>{paragraph}</p>)}</article></section></>}

@@ -1,0 +1,5 @@
+import Link from "next/link";
+import type { EventItem } from "@/types/site";
+import { formatEventDateRange, moneyCents, statusLabel } from "@/lib/format";
+import { PosterVisual } from "@/components/PosterVisual";
+export function EventCard({event,priority=false}:{event:EventItem;priority?:boolean}){const active=event.ticketTypes.find(t=>t.active);const price=active?.priceCents??0;return <article className={priority?"event-card event-card-featured":"event-card"}><Link href={`/events/${event.slug}`} className="event-poster-link" aria-label={`View ${event.title}`}><PosterVisual event={event}/><span className="event-hover-mark">VIEW ↗</span></Link><div className="event-card-meta"><div><p>{formatEventDateRange(event.date,event.endDate)}</p><h3><Link href={`/events/${event.slug}`}>{event.title}</Link></h3><span>{event.venue} · {event.location}</span></div><div className="event-card-price"><small>{statusLabel(event.ticketMode)}</small><strong>{event.ticketMode==="free_rsvp"?"FREE":price?`FROM ${moneyCents(price)}`:"TBA"}</strong></div></div></article>}

@@ -1,0 +1,272 @@
+.mobileMenuButton,
+.closeButton,
+.backdrop {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .adminShell {
+    display: block;
+    min-height: 100svh;
+  }
+
+  .sidebar {
+    position: fixed !important;
+    z-index: 120 !important;
+    inset: 0 auto 0 0;
+    width: min(88vw, 360px);
+    height: 100svh !important;
+    max-height: none !important;
+    overflow: hidden;
+    border-right: 1px solid rgba(255,255,255,.14) !important;
+    border-bottom: 0 !important;
+    box-shadow: 24px 0 80px rgba(0,0,0,.55);
+    transform: translateX(-105%);
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform .22s ease, visibility 0s linear .22s;
+  }
+
+  .sidebarOpen {
+    transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
+    transition-delay: 0s;
+  }
+
+  .sidebarHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .closeButton {
+    display: grid;
+    width: 46px;
+    height: 46px;
+    flex: 0 0 auto;
+    place-items: center;
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 50%;
+    background: #111117;
+    color: white;
+    font-size: 28px;
+    line-height: 1;
+  }
+
+  .sidebar :global(nav) {
+    display: grid !important;
+    flex: 1;
+    gap: 5px;
+    margin-top: 20px;
+    padding: 0 2px 24px;
+    overflow-x: hidden !important;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .sidebar :global(nav button) {
+    width: 100%;
+    min-height: 48px;
+    flex: none !important;
+    justify-content: space-between;
+    padding: 0 14px;
+    text-align: left;
+  }
+
+  .backdrop {
+    display: block;
+    position: fixed;
+    z-index: 110;
+    inset: 0;
+    border: 0;
+    background: rgba(0,0,0,.68);
+    backdrop-filter: blur(4px);
+  }
+
+  .main {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .topbar {
+    position: sticky;
+    z-index: 60;
+    top: 0;
+    display: grid !important;
+    grid-template-columns: auto minmax(0,1fr);
+    gap: 12px 14px;
+    align-items: center;
+    padding: 14px 16px !important;
+    background: rgba(5,5,5,.94);
+    backdrop-filter: blur(18px);
+  }
+
+  .mobileMenuButton {
+    display: inline-flex;
+    min-height: 46px;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 0 14px;
+    border: 1px solid rgba(81,112,255,.62);
+    border-radius: 999px;
+    background: rgba(81,112,255,.13);
+    color: white;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+
+  .mobileMenuButton span {
+    font-size: 17px;
+  }
+
+  .topbar :global(h1) {
+    margin-top: 3px;
+    font-size: clamp(28px, 8vw, 44px) !important;
+    line-height: .95;
+  }
+
+  .topbar :global(.admin-persistence-status) {
+    grid-column: 1 / -1;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  .topbarActions {
+    grid-column: 1 / -1;
+    display: grid !important;
+    grid-template-columns: minmax(0,1fr) auto;
+    width: 100%;
+    gap: 8px !important;
+  }
+
+  .topbarActions :global(.status-dot) {
+    grid-column: 1 / -1;
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .topbarActions :global(.button) {
+    min-height: 44px;
+    padding-inline: 14px;
+  }
+
+  .main :global(.admin-section) {
+    padding: 24px 14px 60px;
+  }
+
+  .main :global(.admin-section-title) {
+    display: grid;
+    gap: 14px;
+    align-items: start;
+  }
+
+  .main :global(.admin-section-title .button) {
+    width: 100%;
+  }
+
+  .main :global(.admin-filter-bar),
+  .main :global(.admin-grid-two),
+  .main :global(.admin-grid-three),
+  .main :global(.customer-admin-grid),
+  .main :global(.form-grid-two) {
+    grid-template-columns: 1fr !important;
+  }
+
+  .main :global(.admin-filter-bar input),
+  .main :global(.admin-filter-bar select),
+  .main :global(.admin-filter-bar button) {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  .main :global(.admin-card) {
+    min-width: 0;
+    padding: 16px;
+  }
+
+  .main :global(.admin-card-head),
+  .main :global(.application-admin-card header) {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .main :global(.inline-admin-actions),
+  .main :global(.application-actions) {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .main :global(.inline-admin-actions button),
+  .main :global(.application-actions button),
+  .main :global(.danger-link) {
+    width: 100%;
+    min-height: 46px;
+  }
+
+  .main :global(.account-list article) {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .main :global(.audit-table) {
+    width: 100%;
+    overflow: visible;
+  }
+
+  .main :global(.audit-row) {
+    min-width: 0 !important;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-bottom: 12px;
+    padding: 14px;
+    border: 1px solid rgba(255,255,255,.12);
+    background: #09090c;
+  }
+
+  .main :global(.audit-head) {
+    display: none;
+  }
+
+  .main :global(.application-admin-card) {
+    padding: 16px;
+  }
+
+  .main :global(.admin-grid-three) {
+    display: grid;
+  }
+}
+
+@media (max-width: 520px) {
+  .topbar {
+    grid-template-columns: 1fr;
+  }
+
+  .mobileMenuButton {
+    width: 100%;
+  }
+
+  .topbarActions {
+    grid-template-columns: 1fr;
+  }
+
+  .topbarActions :global(a),
+  .topbarActions :global(button) {
+    width: 100%;
+  }
+}
+
+@media (max-width: 900px) and (prefers-reduced-motion: reduce) {
+  .sidebar {
+    transition: none;
+  }
+}

@@ -1,0 +1,580 @@
+{
+  "brand": {
+    "name": "SKIE EVENTS",
+    "statement": "High-energy nights with house-party intimacy, club-scale production and a world that feels unmistakably Skie.",
+    "instagramUrl": "https://instagram.com/skieevents",
+    "contactEmail": "hello@skieevents.com",
+    "contactPhone": "",
+    "accent": "#5170FF"
+  },
+  "about": {
+    "eyebrow": "About Skie",
+    "title": "A party company with a world of its own.",
+    "body": [
+      "Skie exists in the space between a house party and a major night out: intimate enough to feel personal, produced enough to feel impossible to ignore.",
+      "We care about the entire experience: the poster, the first message, the application, the line at the door, the room, the sound and the story people carry out with them.",
+      "This platform is the operating system behind every Skie night, built for events, applications, tickets, sponsors, media and community."
+    ]
+  },
+  "homepage": {
+    "upcomingEyebrow": "Next transmissions",
+    "upcomingTitle": "Upcoming events",
+    "upcomingLinkLabel": "View all events",
+    "emptyEventsTitle": "The next signal is being built.",
+    "emptyEventsBody": "Join the mailing list for the first release.",
+    "manifestoMarquee": "NOT ANOTHER NIGHT OUT - BUILT TO BE REMEMBERED -",
+    "manifestoEyebrow": "What is Skie?",
+    "manifestoTitle": "We build the kind of night you talk about the next morning.",
+    "manifestoBody": "High-energy nights with house-party intimacy, sharp curation and no dead space.",
+    "manifestoLinkLabel": "Read the manifesto",
+    "manifestoLinkHref": "/about",
+    "mediaEyebrow": "Proof of life",
+    "mediaTitle": "Inside previous nights",
+    "mediaLinkLabel": "Open media",
+    "reviewsEyebrow": "People said it",
+    "reviewsTitle": "No paid hype. Real reactions.",
+    "reviewsLinkLabel": "Leave a review",
+    "partnersEyebrow": "Partners in the room",
+    "partnersTitle": "Visible. Useful. Never louder than Skie.",
+    "finalCtaEyebrow": "THE NEXT ONE IS ALREADY MOVING.",
+    "finalCtaTitle": "Meet us before the lights come on.",
+    "finalCtaButtonLabel": "Find your event",
+    "finalCtaButtonHref": "/events"
+  },
+  "pages": {
+    "events": {
+      "eyebrow": "SKIE calendar",
+      "title": "Choose your next room.",
+      "body": "Public releases, invite-only applications and everything currently open.",
+      "emptyState": "No public events are live yet."
+    },
+    "media": {
+      "eyebrow": "Media archive",
+      "title": "The flash after midnight.",
+      "body": "Photos, motion and fragments from inside the Skie world."
+    },
+    "reviews": {
+      "eyebrow": "Community",
+      "title": "Say it how it felt.",
+      "body": "Approved reviews from people who were actually in the room.",
+      "formEyebrow": "Your turn",
+      "formTitle": "Leave a review."
+    },
+    "contact": {
+      "eyebrow": "Contact Skie",
+      "title": "Bring us the right idea.",
+      "body": "Partnerships, artists, venues, media or something we have not thought of yet.",
+      "emailLabel": "Email",
+      "instagramLabel": "Instagram",
+      "instagramLinkLabel": "Open Instagram",
+      "basedLabel": "Based",
+      "basedValue": "Melbourne, VIC"
+    }
+  },
+  "footer": {
+    "exploreLabel": "Explore",
+    "eventsLabel": "Upcoming events",
+    "mediaLabel": "Previous nights",
+    "reviewsLabel": "Community reviews",
+    "accountLabel": "My account",
+    "connectLabel": "Connect",
+    "instagramLabel": "Instagram",
+    "contactLabel": "Contact the team",
+    "policiesLabel": "Policies",
+    "termsLabel": "Terms",
+    "privacyLabel": "Privacy",
+    "refundsLabel": "Refunds",
+    "entryLabel": "Entry",
+    "locationLabel": "Melbourne, Australia"
+  },
+  "settings": {
+    "appMode": "test",
+    "currency": "AUD",
+    "timezone": "Australia/Melbourne",
+    "defaultTicketLimit": 2,
+    "defaultAllocationExpiryHours": 48,
+    "newsletterEnabled": true,
+    "featuredSponsorCarousel": false
+  },
+  "heroSlides": [
+    {
+      "id": "hero_001",
+      "active": true,
+      "kicker": "SKIE EVENTS / MELBOURNE",
+      "title": "THE NIGHT STARTS BEFORE THE DOOR.",
+      "subtitle": "Applications, tickets, extras and every Skie signal in one place.",
+      "imageUrl": "",
+      "videoUrl": "",
+      "ctaLabel": "Explore events",
+      "ctaHref": "/events"
+    },
+    {
+      "id": "hero_002",
+      "active": true,
+      "kicker": "PRIVATE RELEASE",
+      "title": "NOT ANOTHER NIGHT OUT.",
+      "subtitle": "Invite-led rooms, close-range energy and a crowd selected for the atmosphere.",
+      "imageUrl": "",
+      "videoUrl": "",
+      "ctaLabel": "Inside Skie",
+      "ctaHref": "/about"
+    }
+  ],
+  "events": [
+    {
+      "id": "evt_redline_2026",
+      "slug": "redline-house-party",
+      "title": "Redline House Party",
+      "date": "2026-10-31",
+      "endDate": "2026-11-01",
+      "time": "8:30 PM Ã¢â‚¬â€œ LATE",
+      "venue": "Private Residence",
+      "location": "Melbourne, VIC",
+      "genre": "HOUSE PARTY / OPEN FORMAT",
+      "teaser": "A private address pushed past its safe operating limit.",
+      "description": "Redline is a deliberately oversized house party with rooms that move differently, a close-range DJ setup and the kind of energy that only works when everyone feels part of it.",
+      "posterUrl": "",
+      "heroUrl": "",
+      "accent": "#5170FF",
+      "lineup": [
+        "SKIE RESIDENTS",
+        "GUEST SELECTOR 01",
+        "GUEST SELECTOR 02"
+      ],
+      "houseRules": [
+        "18+ only. Valid photo ID required.",
+        "Respect the property, venue staff and neighbours.",
+        "No aggressive behaviour. Management reserves the right to refuse entry.",
+        "The final address is released to confirmed ticket holders."
+      ],
+      "faq": [
+        {
+          "question": "When is the address released?",
+          "answer": "The confirmed venue details are sent to paid ticket holders close to the event."
+        },
+        {
+          "question": "Can I transfer my ticket?",
+          "answer": "Transfers are controlled by Skie and must be completed through support before the transfer deadline."
+        }
+      ],
+      "ageRestriction": "18+",
+      "lifecycle": "published",
+      "visibility": "public",
+      "ticketMode": "invite_only",
+      "featured": true,
+      "sponsorIds": [
+        "sp_nocturne"
+      ],
+      "formId": "form_invite",
+      "venueCapacity": 250,
+      "publicCapacity": 180,
+      "sponsorAllocation": 20,
+      "guestlistAllocation": 20,
+      "teamAllocation": 15,
+      "safetyBuffer": 15,
+      "defaultTicketLimit": 2,
+      "productIds": [
+        "prod_drinks_3",
+        "prod_queue_jump"
+      ],
+      "ticketTypes": [
+        {
+          "id": "tt_first_release",
+          "name": "First Release",
+          "description": "Approved access to Redline House Party.",
+          "priceCents": 4500,
+          "capacity": 120,
+          "sold": 2,
+          "defaultMaxPerCustomer": 2,
+          "active": true
+        },
+        {
+          "id": "tt_final_release",
+          "name": "Final Release",
+          "description": "Final allocation before doors.",
+          "priceCents": 5500,
+          "capacity": 60,
+          "sold": 0,
+          "defaultMaxPerCustomer": 2,
+          "active": false
+        }
+      ]
+    },
+    {
+      "id": "evt_skie_zero",
+      "slug": "skie-zero",
+      "title": "Skie Zero",
+      "date": "2026-03-14",
+      "time": "9:00 PM Ã¢â‚¬â€œ 2:00 AM",
+      "venue": "The First Room",
+      "location": "Melbourne, VIC",
+      "genre": "LAUNCH NIGHT",
+      "teaser": "The night the signal switched on.",
+      "description": "Skie Zero was the first proof of concept: a room, a crowd and a new identity tested at full volume.",
+      "posterUrl": "",
+      "heroUrl": "",
+      "accent": "#5170FF",
+      "lineup": [
+        "SKIE RESIDENTS",
+        "FRIENDS OF SKIE"
+      ],
+      "houseRules": [
+        "18+ only.",
+        "Look after the people around you."
+      ],
+      "faq": [],
+      "ageRestriction": "18+",
+      "lifecycle": "archived",
+      "visibility": "archived",
+      "ticketMode": "closed",
+      "featured": false,
+      "sponsorIds": [
+        "sp_nocturne"
+      ],
+      "venueCapacity": 180,
+      "publicCapacity": 150,
+      "sponsorAllocation": 10,
+      "guestlistAllocation": 10,
+      "teamAllocation": 5,
+      "safetyBuffer": 5,
+      "defaultTicketLimit": 2,
+      "productIds": [],
+      "ticketTypes": [
+        {
+          "id": "tt_zero",
+          "name": "General Admission",
+          "description": "Skie Zero admission.",
+          "priceCents": 2000,
+          "capacity": 150,
+          "sold": 150,
+          "defaultMaxPerCustomer": 2,
+          "active": false
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "id": "prod_drinks_3",
+      "eventId": "evt_redline_2026",
+      "name": "3 Drink Pass",
+      "description": "Three eligible house drinks redeemed at the event bar. 18+ and valid ID required.",
+      "type": "drink_pass",
+      "priceCents": 4500,
+      "stockQuantity": 100,
+      "soldQuantity": 0,
+      "maxPerOrder": 2,
+      "maxPerCustomer": 2,
+      "requiresApproval": true,
+      "requiresTicket": true,
+      "isRedeemable": true,
+      "imageUrl": "",
+      "active": true,
+      "visibleOnEventPage": true,
+      "unitsPerPurchase": 3
+    },
+    {
+      "id": "prod_queue_jump",
+      "eventId": "evt_redline_2026",
+      "name": "Priority Entry",
+      "description": "Dedicated priority entry lane before the published cut-off.",
+      "type": "add_on",
+      "priceCents": 1500,
+      "stockQuantity": 40,
+      "soldQuantity": 0,
+      "maxPerOrder": 1,
+      "maxPerCustomer": 1,
+      "requiresApproval": true,
+      "requiresTicket": true,
+      "isRedeemable": true,
+      "imageUrl": "",
+      "active": true,
+      "visibleOnEventPage": true,
+      "unitsPerPurchase": 1
+    }
+  ],
+  "sponsors": [
+    {
+      "id": "sp_nocturne",
+      "name": "NOCTURNE",
+      "tagline": "Night partner",
+      "description": "Independent nightlife support for rooms that put the crowd first.",
+      "logoUrl": "",
+      "bannerUrl": "",
+      "websiteUrl": "https://example.com",
+      "instagramUrl": "",
+      "active": true
+    },
+    {
+      "id": "sp_sideb",
+      "name": "SIDE B",
+      "tagline": "Culture partner",
+      "description": "A culture platform built around the other side of the record.",
+      "logoUrl": "",
+      "bannerUrl": "",
+      "websiteUrl": "https://example.com",
+      "instagramUrl": "",
+      "active": true
+    }
+  ],
+  "media": [
+    {
+      "id": "media_1",
+      "title": "Hands above the room",
+      "eventName": "Skie Zero",
+      "eventId": "evt_skie_zero",
+      "type": "image",
+      "url": "",
+      "featured": true,
+      "published": true
+    },
+    {
+      "id": "media_2",
+      "title": "Before the drop",
+      "eventName": "Skie Zero",
+      "eventId": "evt_skie_zero",
+      "type": "image",
+      "url": "",
+      "featured": true,
+      "published": true
+    },
+    {
+      "id": "media_3",
+      "title": "2:14 AM",
+      "eventName": "Skie Zero",
+      "eventId": "evt_skie_zero",
+      "type": "image",
+      "url": "",
+      "featured": true,
+      "published": true
+    }
+  ],
+  "reviews": [
+    {
+      "id": "review_1",
+      "name": "Maya",
+      "rating": 5,
+      "body": "It felt like everyone knew the same secret. The energy was close, loud and completely different from a standard club night.",
+      "status": "hidden",
+      "featured": true,
+      "createdAt": "2026-03-15T03:20:00.000Z"
+    },
+    {
+      "id": "review_2",
+      "name": "Arjun",
+      "rating": 5,
+      "body": "The room actually had personality. The music changed without killing the flow and the whole thing felt properly considered.",
+      "status": "hidden",
+      "featured": true,
+      "createdAt": "2026-03-15T04:05:00.000Z"
+    },
+    {
+      "id": "review_155804b062d76f2ae024af6e",
+      "userId": "local-admin",
+      "name": "abc",
+      "rating": 5,
+      "body": "greatgreatgreatgreatgreatgreatgreatgreat",
+      "status": "approved",
+      "featured": false,
+      "createdAt": "2026-07-17T04:33:24.457Z"
+    }
+  ],
+  "forms": [
+    {
+      "id": "form_invite",
+      "name": "Invite-only application",
+      "intro": "Tell us enough to understand who is joining the room. Approval unlocks a limited ticket allocation in your account.",
+      "active": true,
+      "fields": [
+        {
+          "id": "f_instagram",
+          "key": "instagram",
+          "label": "Instagram handle",
+          "type": "text",
+          "required": true,
+          "placeholder": "@yourhandle",
+          "options": [],
+          "maxLength": 80
+        },
+        {
+          "id": "f_occupation",
+          "key": "occupation",
+          "label": "Occupation or university",
+          "type": "text",
+          "required": false,
+          "placeholder": "Optional",
+          "options": [],
+          "maxLength": 120
+        },
+        {
+          "id": "f_invited",
+          "key": "invited_by",
+          "label": "Who invited you?",
+          "type": "text",
+          "required": false,
+          "placeholder": "Name or account",
+          "options": [],
+          "maxLength": 120
+        },
+        {
+          "id": "f_hear",
+          "key": "heard_from",
+          "label": "How did you hear about this event?",
+          "type": "select",
+          "required": true,
+          "placeholder": "Choose one",
+          "options": [
+            "Instagram",
+            "Friend",
+            "Previous Skie event",
+            "Sponsor or artist",
+            "Other"
+          ]
+        },
+        {
+          "id": "f_reason",
+          "key": "why_join",
+          "label": "Why do you want to join this release?",
+          "type": "textarea",
+          "required": true,
+          "placeholder": "Keep it real.",
+          "options": [],
+          "maxLength": 600
+        },
+        {
+          "id": "f_age",
+          "key": "age_confirmed",
+          "label": "Age confirmation",
+          "type": "checkbox",
+          "required": true,
+          "placeholder": "I confirm I am 18+ and can provide valid photo ID at entry.",
+          "options": []
+        },
+        {
+          "id": "f_media",
+          "key": "media_consent",
+          "label": "Media consent",
+          "type": "checkbox",
+          "required": false,
+          "placeholder": "I consent to photos and video of me being used in Skie Events recaps and marketing.",
+          "options": []
+        },
+        {
+          "id": "f_sponsor",
+          "key": "sponsor_consent",
+          "label": "Sponsor consent",
+          "type": "checkbox",
+          "required": false,
+          "placeholder": "I consent to my contact details being shared with named sponsors of this event.",
+          "options": []
+        }
+      ]
+    }
+  ],
+  "emailTemplates": [
+    {
+      "id": "email_application_received",
+      "key": "application_received",
+      "name": "Application received",
+      "subject": "We received your {{event_title}} application",
+      "html": "<h1>Application received.</h1><p>Hi {{first_name}}, your application for <strong>{{event_title}}</strong> is now under review.</p>",
+      "active": true,
+      "updatedAt": "2026-07-17T00:00:00.000Z"
+    },
+    {
+      "id": "email_ticket_unlocked",
+      "key": "ticket_unlocked",
+      "name": "Ticket unlocked",
+      "subject": "Your {{event_title}} ticket is unlocked",
+      "html": "<h1>Your ticket is unlocked.</h1><p>Hi {{first_name}}, log in to buy up to {{max_quantity}} ticket(s) before {{expires_at}}.</p><p><a href=\"{{account_url}}\">Open your account</a></p>",
+      "active": true,
+      "updatedAt": "2026-07-17T00:00:00.000Z"
+    },
+    {
+      "id": "email_ticket_issued",
+      "key": "ticket_issued",
+      "name": "Ticket issued",
+      "subject": "Your {{event_title}} ticket is ready",
+      "html": "<h1>You are in.</h1><p>Your ticket for <strong>{{event_title}}</strong> is available in your account.</p><p><a href=\"{{ticket_url}}\">Open ticket</a></p>",
+      "active": true,
+      "updatedAt": "2026-07-17T00:00:00.000Z"
+    },
+    {
+      "id": "email_waitlist",
+      "key": "waitlist",
+      "name": "Waitlist",
+      "subject": "Update on your {{event_title}} application",
+      "html": "<h1>You are on the waitlist.</h1><p>We will contact you if an allocation becomes available.</p>",
+      "active": true,
+      "updatedAt": "2026-07-17T00:00:00.000Z"
+    },
+    {
+      "id": "email_not_selected",
+      "key": "not_selected",
+      "name": "Not selected",
+      "subject": "Update on your {{event_title}} application",
+      "html": "<h1>Not selected for this release.</h1><p>Thank you for applying. This decision only applies to this release.</p>",
+      "active": true,
+      "updatedAt": "2026-07-17T00:00:00.000Z"
+    },
+    {
+      "id": "email_payment_reminder",
+      "key": "payment_reminder",
+      "name": "Payment reminder",
+      "subject": "Your {{event_title}} ticket is still unlocked",
+      "html": "<h1>Your ticket is waiting, {{first_name}}.</h1><p>Your access to {{event_title}} is unlocked until {{expires_at}}.</p><p><a href=\"{{account_url}}\">Open your Skie account</a></p>",
+      "active": true,
+      "updatedAt": "2026-07-17T00:00:00.000Z"
+    }
+  ],
+  "legalPages": [
+    {
+      "id": "legal_terms",
+      "slug": "terms",
+      "title": "Terms & Conditions",
+      "version": "1.0",
+      "publishedAt": "2026-07-17T00:00:00.000Z",
+      "content": "These terms govern applications, ticket purchases, event access and use of the Skie Events platform. Tickets remain subject to event-specific conditions, capacity and venue rules."
+    },
+    {
+      "id": "legal_privacy",
+      "slug": "privacy",
+      "title": "Privacy Policy",
+      "version": "1.0",
+      "publishedAt": "2026-07-17T00:00:00.000Z",
+      "content": "Skie Events collects information needed to manage applications, payments, tickets, event safety and communications. Sponsor data is only exported where the relevant consent was recorded."
+    },
+    {
+      "id": "legal_refund",
+      "slug": "refund-policy",
+      "title": "Refund Policy",
+      "version": "1.0",
+      "publishedAt": "2026-07-17T00:00:00.000Z",
+      "content": "Refund eligibility depends on the event, product and reason. Event cancellation and major changes will be handled according to Australian consumer law and the published event terms."
+    },
+    {
+      "id": "legal_entry",
+      "slug": "entry-policy",
+      "title": "Entry Policy",
+      "version": "1.0",
+      "publishedAt": "2026-07-17T00:00:00.000Z",
+      "content": "All events are 18+ unless expressly stated otherwise. Valid photo ID is required. Management and venue security reserve the right to refuse entry for safety, intoxication, aggression or breach of event rules."
+    },
+    {
+      "id": "legal_media",
+      "slug": "media-release",
+      "title": "Media Release",
+      "version": "1.0",
+      "publishedAt": "2026-07-17T00:00:00.000Z",
+      "content": "Photography and video may be captured at Skie Events and used in event recaps and brand marketing. Contact us if you have a specific safety or privacy concern."
+    },
+    {
+      "id": "legal_age",
+      "slug": "age-policy",
+      "title": "Age Policy",
+      "version": "1.0",
+      "publishedAt": "2026-07-17T00:00:00.000Z",
+      "content": "Skie nightlife events are 18+ and require valid government-issued photo identification at entry."
+    }
+  ]
+}

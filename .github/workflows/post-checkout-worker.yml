@@ -1,0 +1,349 @@
+name: Production operations worker
+# Re-run production verification whenever reliability changes reach main.
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/post-checkout-worker.yml"
+      - "src/lib/post-approval/worker.ts"
+      - "src/lib/post-approval/worker-store.ts"
+      - "src/lib/post-approval/health.ts"
+      - "src/lib/post-approval/readiness.ts"
+      - "src/lib/notifications/enqueue-jobs.ts"
+      - "src/lib/notifications/provider.ts"
+      - "src/lib/notifications/worker.ts"
+      - "src/lib/payments/event-shutdown.ts"
+      - "src/app/api/internal/post-checkout/process/route.ts"
+      - "supabase/migrations/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: production-operations-worker
+  cancel-in-progress: false
+
+jobs:
+  process:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Process post-checkout and notification work
+        id: process
+        env:
+          WORKER_SECRET: ${{ secrets.POST_CHECKOUT_WORKER_SECRET }}
+          WORKER_URL: https://www.skieevents.com/api/internal/post-checkout/process
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          summary_file="${RUNNER_TEMP}/production-worker-summary.env"
+          cat >"${summary_file}" <<'SUMMARY'
+          HTTP_STATUS=000
+          WORKER_ERROR_CODE=none
+          PAYMENT_FAILURES=0
+          PAYMENT_ERROR_CODES=none
+          NOTIFICATION_FAILURES=0
+          ENQUEUE_FAILURES=0
+          EVENT_SHUTDOWN_FAILURES=0
+          WEBHOOK_REPLAY_FAILURES=0
+          UNRESOLVED_PAYMENTS=0
+          STALLED_PAYMENTS=0
+          UNRESOLVED_NOTIFICATIONS=0
+          STALLED_NOTIFICATIONS=0
+          UNRESOLVED_ENQUEUE_JOBS=0
+          STALLED_ENQUEUE_JOBS=0
+          UNRESOLVED_EVENT_SHUTDOWN=0
+          STALLED_EVENT_SHUTDOWN=0
+          UNRESOLVED_WEBHOOK_REPLAY=0
+          STALLED_WEBHOOK_REPLAY=0
+          PAYMENT_RECOVERIES=0
+          ORPHAN_SESSIONS=0
+          WEBHOOK_REVIEW=0
+          STALE_WEBHOOKS=0
+          OVERDUE_LIFECYCLE=0
+          HEARTBEAT_OK=false
+          PROVIDER_OK=false
+          SUMMARY
+
+          if [[ -z "${WORKER_SECRET}" ]]; then
+            echo "POST_CHECKOUT_WORKER_SECRET is not configured."
+            exit 1
+          fi
+
+          response_file="${RUNNER_TEMP}/production-worker-response.json"
+          http_status="$(
+            curl \
+              --silent \
+              --show-error \
+              --location \
+              --request POST \
+              --header "Authorization: Bearer ${WORKER_SECRET}" \
+              --header "Content-Type: application/json" \
+              --data '{"batchSize":25}' \
+              --connect-timeout 15 \
+              --max-time 90 \
+              --retry 2 \
+              --retry-all-errors \
+              --retry-delay 10 \
+              --output "${response_file}" \
+              --write-out "%{http_code}" \
+              "${WORKER_URL}"
+          )"
+
+          cat "${response_file}"
+          echo
+
+          worker_error_code="$(jq -r '
+            if type == "object"
+              and (.code | type == "string")
+              and (.code | test("^[A-Z0-9_]{3,120}$"))
+            then .code
+            elif type == "object" and has("error")
+            then "WORKER_RESPONSE_ERROR"
+            else "none"
+            end
+          ' "${response_file}" 2>/dev/null || echo "INVALID_RESPONSE")"
+          if ! [[ "${worker_error_code}" =~ ^(none|[A-Z0-9_]{3,120})$ ]]; then
+            worker_error_code="INVALID_RESPONSE"
+          fi
+
+          cat >"${summary_file}" <<SUMMARY
+          HTTP_STATUS=${http_status}
+          WORKER_ERROR_CODE=${worker_error_code}
+          PAYMENT_FAILURES=0
+          PAYMENT_ERROR_CODES=none
+          NOTIFICATION_FAILURES=0
+          ENQUEUE_FAILURES=0
+          EVENT_SHUTDOWN_FAILURES=0
+          WEBHOOK_REPLAY_FAILURES=0
+          UNRESOLVED_PAYMENTS=0
+          STALLED_PAYMENTS=0
+          UNRESOLVED_NOTIFICATIONS=0
+          STALLED_NOTIFICATIONS=0
+          UNRESOLVED_ENQUEUE_JOBS=0
+          STALLED_ENQUEUE_JOBS=0
+          UNRESOLVED_EVENT_SHUTDOWN=0
+          STALLED_EVENT_SHUTDOWN=0
+          UNRESOLVED_WEBHOOK_REPLAY=0
+          STALLED_WEBHOOK_REPLAY=0
+          PAYMENT_RECOVERIES=0
+          ORPHAN_SESSIONS=0
+          WEBHOOK_REVIEW=0
+          STALE_WEBHOOKS=0
+          OVERDUE_LIFECYCLE=0
+          HEARTBEAT_OK=false
+          PROVIDER_OK=false
+          SUMMARY
+
+          if [[ "${http_status}" -lt 200 || "${http_status}" -ge 300 ]]; then
+            echo "Production operations worker returned HTTP ${http_status}."
+            exit 1
+          fi
+
+          if ! jq -e 'type == "object" and (.error | not)' "${response_file}" >/dev/null; then
+            echo "Production operations worker returned an invalid response."
+            exit 1
+          fi
+
+          payment_failures="$(jq -r '.paymentActionsFailed // 0' "${response_file}")"
+          payment_error_codes="$(jq -r '[.paymentActionErrorCodes[]? | select(type == "string" and test("^[A-Z0-9_]{3,120}$"))] | unique | if length == 0 then "none" else join(",") end' "${response_file}")"
+          notification_failures="$(jq -r '[.notifications.results[]? | select(.status == "temporary_failure" or .status == "permanent_failure")] | length' "${response_file}")"
+          enqueue_failures="$(jq -r '.notifications.enqueueJobs.failed // 0' "${response_file}")"
+          event_shutdown_failures="$(jq -r '.eventShutdown.failed // 0' "${response_file}")"
+          webhook_replay_failures="$(jq -r '.webhookReplay.failed // 0' "${response_file}")"
+          unresolved_payments="$(jq -r '.health.paymentActionsRequiringReview // 0' "${response_file}")"
+          stalled_payments="$(jq -r '.health.stalledPaymentActions // 0' "${response_file}")"
+          unresolved_notifications="$(jq -r '.health.failedNotifications // 0' "${response_file}")"
+          stalled_notifications="$(jq -r '.health.stalledNotifications // 0' "${response_file}")"
+          unresolved_enqueue_jobs="$(jq -r '.health.notificationEnqueueJobsRequiringReview // 0' "${response_file}")"
+          stalled_enqueue_jobs="$(jq -r '.health.stalledNotificationEnqueueJobs // 0' "${response_file}")"
+          unresolved_event_shutdown="$(jq -r '.health.eventShutdownActionsRequiringReview // 0' "${response_file}")"
+          stalled_event_shutdown="$(jq -r '.health.stalledEventShutdownActions // 0' "${response_file}")"
+          unresolved_webhook_replay="$(jq -r '.health.webhookReplayActionsRequiringReview // 0' "${response_file}")"
+          stalled_webhook_replay="$(jq -r '.health.stalledWebhookReplayActions // 0' "${response_file}")"
+          payment_recoveries="$(jq -r '.health.paymentRecoveriesRequiringReview // 0' "${response_file}")"
+          orphan_sessions="$(jq -r '.health.orphanStripeSessions // 0' "${response_file}")"
+          webhook_review="$(jq -r '.health.webhooksRequiringReview // 0' "${response_file}")"
+          stale_webhooks="$(jq -r '.health.staleTemporaryWebhooks // 0' "${response_file}")"
+          overdue_lifecycle="$(jq -r '.health.overduePostCheckoutLifecycle // 0' "${response_file}")"
+          heartbeat_ok="$(jq -r '.health.workerHeartbeatHealthy // false' "${response_file}")"
+          provider_ok="$(jq -r '.health.notificationProviderConfigurationHealthy // false' "${response_file}")"
+
+          for count in "${payment_failures}" "${notification_failures}" "${enqueue_failures}" "${event_shutdown_failures}" "${webhook_replay_failures}" "${unresolved_payments}" "${stalled_payments}" "${unresolved_notifications}" "${stalled_notifications}" "${unresolved_enqueue_jobs}" "${stalled_enqueue_jobs}" "${unresolved_event_shutdown}" "${stalled_event_shutdown}" "${unresolved_webhook_replay}" "${stalled_webhook_replay}" "${payment_recoveries}" "${orphan_sessions}" "${webhook_review}" "${stale_webhooks}" "${overdue_lifecycle}"; do
+            if ! [[ "${count}" =~ ^[0-9]+$ ]]; then
+              echo "Production operations worker returned an invalid failure count."
+              exit 1
+            fi
+          done
+          if ! [[ "${payment_error_codes}" =~ ^(none|[A-Z0-9_]{3,120}(,[A-Z0-9_]{3,120})*)$ ]]; then
+            echo "Production operations worker returned invalid safe error codes."
+            exit 1
+          fi
+          for flag in "${heartbeat_ok}" "${provider_ok}"; do
+            if [[ "${flag}" != "true" && "${flag}" != "false" ]]; then
+              echo "Production operations worker returned an invalid health flag."
+              exit 1
+            fi
+          done
+
+          cat >"${summary_file}" <<SUMMARY
+          HTTP_STATUS=${http_status}
+          WORKER_ERROR_CODE=${worker_error_code}
+          PAYMENT_FAILURES=${payment_failures}
+          PAYMENT_ERROR_CODES=${payment_error_codes}
+          NOTIFICATION_FAILURES=${notification_failures}
+          ENQUEUE_FAILURES=${enqueue_failures}
+          EVENT_SHUTDOWN_FAILURES=${event_shutdown_failures}
+          WEBHOOK_REPLAY_FAILURES=${webhook_replay_failures}
+          UNRESOLVED_PAYMENTS=${unresolved_payments}
+          STALLED_PAYMENTS=${stalled_payments}
+          UNRESOLVED_NOTIFICATIONS=${unresolved_notifications}
+          STALLED_NOTIFICATIONS=${stalled_notifications}
+          UNRESOLVED_ENQUEUE_JOBS=${unresolved_enqueue_jobs}
+          STALLED_ENQUEUE_JOBS=${stalled_enqueue_jobs}
+          UNRESOLVED_EVENT_SHUTDOWN=${unresolved_event_shutdown}
+          STALLED_EVENT_SHUTDOWN=${stalled_event_shutdown}
+          UNRESOLVED_WEBHOOK_REPLAY=${unresolved_webhook_replay}
+          STALLED_WEBHOOK_REPLAY=${stalled_webhook_replay}
+          PAYMENT_RECOVERIES=${payment_recoveries}
+          ORPHAN_SESSIONS=${orphan_sessions}
+          WEBHOOK_REVIEW=${webhook_review}
+          STALE_WEBHOOKS=${stale_webhooks}
+          OVERDUE_LIFECYCLE=${overdue_lifecycle}
+          HEARTBEAT_OK=${heartbeat_ok}
+          PROVIDER_OK=${provider_ok}
+          SUMMARY
+
+          if (( payment_failures > 0 || unresolved_payments > 0 || stalled_payments > 0 )); then
+            echo "Post-checkout payment actions require recovery."
+            exit 1
+          fi
+          if (( notification_failures > 0 || enqueue_failures > 0 || unresolved_notifications > 0 || stalled_notifications > 0 || unresolved_enqueue_jobs > 0 || stalled_enqueue_jobs > 0 )); then
+            echo "Transactional notifications require recovery."
+            exit 1
+          fi
+          if (( event_shutdown_failures > 0 || unresolved_event_shutdown > 0 || stalled_event_shutdown > 0 )); then
+            echo "Event payment shutdown work requires recovery."
+            exit 1
+          fi
+          if (( webhook_replay_failures > 0 || unresolved_webhook_replay > 0 || stalled_webhook_replay > 0 )); then
+            echo "Stripe webhook replay work requires recovery."
+            exit 1
+          fi
+          if (( payment_recoveries > 0 || orphan_sessions > 0 || webhook_review > 0 || stale_webhooks > 0 )); then
+            echo "Payment fulfilment, Stripe session, or webhook recovery work remains unresolved."
+            exit 1
+          fi
+          if (( overdue_lifecycle > 0 )); then
+            echo "Post-checkout deadline work remains overdue."
+            exit 1
+          fi
+          if [[ "${heartbeat_ok}" != "true" ]]; then
+            echo "The production operations heartbeat is stale."
+            exit 1
+          fi
+          if [[ "${provider_ok}" != "true" ]]; then
+            echo "The transactional email provider is not safely configured."
+            exit 1
+          fi
+
+      - name: Publish production operations status
+        if: always()
+        continue-on-error: true
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PROCESS_OUTCOME: ${{ steps.process.outcome }}
+        run: |
+          set -euo pipefail
+
+          summary_file="${RUNNER_TEMP}/production-worker-summary.env"
+          HTTP_STATUS=000
+          WORKER_ERROR_CODE=none
+          PAYMENT_FAILURES=0
+          PAYMENT_ERROR_CODES=none
+          NOTIFICATION_FAILURES=0
+          ENQUEUE_FAILURES=0
+          EVENT_SHUTDOWN_FAILURES=0
+          WEBHOOK_REPLAY_FAILURES=0
+          UNRESOLVED_PAYMENTS=0
+          STALLED_PAYMENTS=0
+          UNRESOLVED_NOTIFICATIONS=0
+          STALLED_NOTIFICATIONS=0
+          UNRESOLVED_ENQUEUE_JOBS=0
+          STALLED_ENQUEUE_JOBS=0
+          UNRESOLVED_EVENT_SHUTDOWN=0
+          STALLED_EVENT_SHUTDOWN=0
+          UNRESOLVED_WEBHOOK_REPLAY=0
+          STALLED_WEBHOOK_REPLAY=0
+          PAYMENT_RECOVERIES=0
+          ORPHAN_SESSIONS=0
+          WEBHOOK_REVIEW=0
+          STALE_WEBHOOKS=0
+          OVERDUE_LIFECYCLE=0
+          HEARTBEAT_OK=false
+          PROVIDER_OK=false
+          if [[ -f "${summary_file}" ]]; then
+            source "${summary_file}"
+          fi
+
+          run_url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          body="$(cat <<STATUS
+          Production operations worker: **${PROCESS_OUTCOME}**
+
+          - Commit: \`${GITHUB_SHA}\`
+          - Worker endpoint HTTP status: ${HTTP_STATUS}
+          - Worker endpoint safe error code: ${WORKER_ERROR_CODE}
+          - Payment actions failed this run: ${PAYMENT_FAILURES}
+          - Payment action safe error codes: ${PAYMENT_ERROR_CODES}
+          - Notification deliveries failed this run: ${NOTIFICATION_FAILURES}
+          - Notification enqueue jobs failed this run: ${ENQUEUE_FAILURES}
+          - Event payment shutdown actions failed this run: ${EVENT_SHUTDOWN_FAILURES}
+          - Stripe webhook replay actions failed this run: ${WEBHOOK_REPLAY_FAILURES}
+          - Payment actions requiring review: ${UNRESOLVED_PAYMENTS}
+          - Stalled payment actions: ${STALLED_PAYMENTS}
+          - Notifications in terminal failure: ${UNRESOLVED_NOTIFICATIONS}
+          - Stalled notifications: ${STALLED_NOTIFICATIONS}
+          - Notification enqueue jobs requiring review: ${UNRESOLVED_ENQUEUE_JOBS}
+          - Stalled notification enqueue jobs: ${STALLED_ENQUEUE_JOBS}
+          - Event payment shutdown actions requiring review: ${UNRESOLVED_EVENT_SHUTDOWN}
+          - Stalled event payment shutdown actions: ${STALLED_EVENT_SHUTDOWN}
+          - Stripe webhook replay actions requiring review: ${UNRESOLVED_WEBHOOK_REPLAY}
+          - Stalled Stripe webhook replay actions: ${STALLED_WEBHOOK_REPLAY}
+          - Payment recoveries requiring review: ${PAYMENT_RECOVERIES}
+          - Orphan Stripe sessions: ${ORPHAN_SESSIONS}
+          - Webhooks requiring review: ${WEBHOOK_REVIEW}
+          - Stale temporary webhooks: ${STALE_WEBHOOKS}
+          - Overdue post-checkout lifecycle rows: ${OVERDUE_LIFECYCLE}
+          - Worker heartbeat current: ${HEARTBEAT_OK}
+          - Transactional email provider configured: ${PROVIDER_OK}
+          - Checked at: ${GITHUB_RUN_STARTED_AT:-$(date -u +%Y-%m-%dT%H:%M:%SZ)}
+          - Run: ${run_url}
+
+          This issue contains aggregate health and bounded safe error codes only. It does not include customer, order, Stripe or payment identifiers.
+          STATUS
+          )"
+
+          issue_number="$(gh issue list \
+            --repo "${GITHUB_REPOSITORY}" \
+            --state open \
+            --search '"Production operations status" in:title' \
+            --json number \
+            --jq '.[0].number // empty')"
+
+          if [[ -z "${issue_number}" ]]; then
+            gh issue create \
+              --repo "${GITHUB_REPOSITORY}" \
+              --title "Production operations status" \
+              --body "${body}"
+          else
+            gh issue edit "${issue_number}" \
+              --repo "${GITHUB_REPOSITORY}" \
+              --body "${body}"
+          fi

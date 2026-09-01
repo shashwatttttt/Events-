@@ -1,0 +1,90 @@
+.ticket-type-options{
+  margin:0 0 30px;
+  padding:0;
+  border:0;
+}
+
+.ticket-type-options>legend{
+  margin-bottom:14px;
+  color:#c7c7cf;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.ticket-type-options>div{
+  display:grid;
+  gap:10px;
+}
+
+.ticket-type-options label{
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr) auto;
+  align-items:center;
+  gap:16px;
+  min-height:78px;
+  padding:16px 18px;
+  border:1px solid rgba(255,255,255,.14);
+  background:#08080b;
+  cursor:pointer;
+  transition:border-color .2s,background .2s,transform .2s;
+}
+
+.ticket-type-options label:hover{
+  border-color:rgba(81,112,255,.72);
+  background:rgba(81,112,255,.06);
+  transform:translateY(-1px);
+}
+
+.ticket-type-options label.is-selected{
+  border-color:#5170ff;
+  background:linear-gradient(135deg,rgba(81,112,255,.16),rgba(81,112,255,.04));
+  box-shadow:inset 3px 0 0 #5170ff;
+}
+
+.ticket-type-options input{
+  width:18px;
+  height:18px;
+  margin:0;
+  accent-color:#5170ff;
+}
+
+.ticket-type-options input:focus-visible{
+  outline:2px solid #7890ff;
+  outline-offset:4px;
+}
+
+.ticket-type-options span{
+  min-width:0;
+  display:grid;
+  gap:4px;
+}
+
+.ticket-type-options strong{
+  overflow-wrap:anywhere;
+  font-size:16px;
+  text-transform:uppercase;
+}
+
+.ticket-type-options small{
+  color:#8d8d96;
+  line-height:1.4;
+}
+
+.ticket-type-options b{
+  font-size:22px;
+  letter-spacing:-.03em;
+  white-space:nowrap;
+}
+
+@media(max-width:560px){
+  .ticket-type-options label{
+    grid-template-columns:auto minmax(0,1fr);
+  }
+
+  .ticket-type-options b{
+    grid-column:2;
+    font-size:19px;
+  }
+}

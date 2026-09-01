@@ -1,0 +1,1248 @@
+{
+  "users": [
+    {
+      "id": "usr_854782460c3bd1a62b935322",
+      "firstName": "abc",
+      "lastName": "cbd",
+      "email": "janmayjaiyadav73@gmail.com",
+      "phone": "0413230032",
+      "instagram": "@blahblah",
+      "passwordHash": "$2b$12$EXT.mYx6l4MbMSkDr0OYd.KTRdKLaforXR6EArlk632.c7jEp6UVu",
+      "role": "customer",
+      "tags": [],
+      "internalNotes": "",
+      "createdAt": "2026-07-17T04:25:42.842Z",
+      "updatedAt": "2026-07-17T04:25:42.842Z"
+    },
+    {
+      "id": "usr_67a5fab59d2dd9c8695e394e",
+      "firstName": "bcd",
+      "lastName": "bcd",
+      "email": "janmayjaiyadav59@gmail.com",
+      "phone": "+61413230032",
+      "instagram": "@bcd",
+      "passwordHash": "$2b$12$HKw03pWeg5X1fz2Wjnwdquv5M5kR8FZ.xjsbjgPa462XbUkIb29nG",
+      "role": "customer",
+      "tags": [],
+      "internalNotes": "",
+      "createdAt": "2026-07-17T05:53:00.669Z",
+      "updatedAt": "2026-07-17T05:53:00.669Z"
+    }
+  ],
+  "consents": [
+    {
+      "id": "consent_e7c15b371523defa331d1a58",
+      "userId": "usr_854782460c3bd1a62b935322",
+      "eventId": "evt_redline_2026",
+      "type": "terms",
+      "accepted": true,
+      "textShown": "I agree to the Terms & Conditions.",
+      "policyVersion": "1.0",
+      "acceptedAt": "2026-07-17T04:26:15.995Z",
+      "ipHash": "eff8e7ca506627fe15dda5e0e512fcaa",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+    },
+    {
+      "id": "consent_b24ff22df48e7dab54b5ef26",
+      "userId": "usr_854782460c3bd1a62b935322",
+      "eventId": "evt_redline_2026",
+      "type": "privacy",
+      "accepted": true,
+      "textShown": "I acknowledge the Privacy Policy.",
+      "policyVersion": "1.0",
+      "acceptedAt": "2026-07-17T04:26:15.995Z",
+      "ipHash": "eff8e7ca506627fe15dda5e0e512fcaa",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+    },
+    {
+      "id": "consent_2c584a63cf6a345387759d90",
+      "userId": "usr_854782460c3bd1a62b935322",
+      "eventId": "evt_redline_2026",
+      "type": "entry",
+      "accepted": true,
+      "textShown": "I agree to the Entry Policy.",
+      "policyVersion": "1.0",
+      "acceptedAt": "2026-07-17T04:26:15.995Z",
+      "ipHash": "eff8e7ca506627fe15dda5e0e512fcaa",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+    },
+    {
+      "id": "consent_5a0e9d2225225549261962d7",
+      "userId": "usr_854782460c3bd1a62b935322",
+      "eventId": "evt_redline_2026",
+      "type": "age",
+      "accepted": true,
+      "textShown": "I confirm I am 18+ and can provide valid photo ID at entry.",
+      "policyVersion": "1.0",
+      "acceptedAt": "2026-07-17T04:26:15.995Z",
+      "ipHash": "eff8e7ca506627fe15dda5e0e512fcaa",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+    },
+    {
+      "id": "consent_eaa1555d04d9cc550f77cb29",
+      "userId": "usr_854782460c3bd1a62b935322",
+      "eventId": "evt_redline_2026",
+      "type": "media",
+      "accepted": true,
+      "textShown": "I understand photos and videos may be captured and used for Skie Events marketing.",
+      "policyVersion": "1.0",
+      "acceptedAt": "2026-07-17T04:26:15.995Z",
+      "ipHash": "eff8e7ca506627fe15dda5e0e512fcaa",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+    },
+    {
+      "id": "consent_119b0b24918b306c33823e39",
+      "userId": "usr_854782460c3bd1a62b935322",
+      "eventId": "evt_redline_2026",
+      "type": "sponsor",
+      "accepted": true,
+      "textShown": "I agree that selected contact details may be shared with named event sponsors for this event only.",
+      "policyVersion": "1.0",
+      "acceptedAt": "2026-07-17T04:26:15.995Z",
+      "ipHash": "eff8e7ca506627fe15dda5e0e512fcaa",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+    },
+    {
+      "id": "consent_384a11acb9a73b8183f8e5b3",
+      "userId": "usr_67a5fab59d2dd9c8695e394e",
+      "eventId": "evt_redline_2026",
+      "type": "terms",
+      "accepted": true,
+      "textShown": "I agree to the Terms & Conditions.",
+      "policyVersion": "1.0",
+      "acceptedAt": "2026-07-17T05:53:35.004Z",
+      "ipHash": "eff8e7ca506627fe15dda5e0e512fcaa",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+    },
+    {
+      "id": "consent_f63f6523cf5daca2d92eef02",
+      "userId": "usr_67a5fab59d2dd9c8695e394e",
+      "eventId": "evt_redline_2026",
+      "type": "privacy",
+      "accepted": true,
+      "textShown": "I acknowledge the Privacy Policy.",
+      "policyVersion": "1.0",
+      "acceptedAt": "2026-07-17T05:53:35.004Z",
+      "ipHash": "eff8e7ca506627fe15dda5e0e512fcaa",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+    },
+    {
+      "id": "consent_e1faa7d4cc075a70b27ced9c",
+      "userId": "usr_67a5fab59d2dd9c8695e394e",
+      "eventId": "evt_redline_2026",
+      "type": "entry",
+      "accepted": true,
+      "textShown": "I agree to the Entry Policy.",
+      "policyVersion": "1.0",
+      "acceptedAt": "2026-07-17T05:53:35.004Z",
+      "ipHash": "eff8e7ca506627fe15dda5e0e512fcaa",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+    },
+    {
+      "id": "consent_8b7e2a6ba90439cd7415fff4",
+      "userId": "usr_67a5fab59d2dd9c8695e394e",
+      "eventId": "evt_redline_2026",
+      "type": "age",
+      "accepted": true,
+      "textShown": "I confirm I am 18+ and can provide valid photo ID at entry.",
+      "policyVersion": "1.0",
+      "acceptedAt": "2026-07-17T05:53:35.004Z",
+      "ipHash": "eff8e7ca506627fe15dda5e0e512fcaa",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+    },
+    {
+      "id": "consent_416b71de2be563db469db6cc",
+      "userId": "usr_67a5fab59d2dd9c8695e394e",
+      "eventId": "evt_redline_2026",
+      "type": "media",
+      "accepted": false,
+      "textShown": "Media consent",
+      "policyVersion": "1.0",
+      "acceptedAt": "2026-07-17T05:53:35.004Z",
+      "ipHash": "eff8e7ca506627fe15dda5e0e512fcaa",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+    },
+    {
+      "id": "consent_b9f418333aa1e8456f3a8419",
+      "userId": "usr_67a5fab59d2dd9c8695e394e",
+      "eventId": "evt_redline_2026",
+      "type": "sponsor",
+      "accepted": false,
+      "textShown": "Sponsor consent",
+      "policyVersion": "1.0",
+      "acceptedAt": "2026-07-17T05:53:35.004Z",
+      "ipHash": "eff8e7ca506627fe15dda5e0e512fcaa",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+    }
+  ],
+  "applications": [
+    {
+      "id": "app_2af621530b58b3d3430fb5f4",
+      "eventId": "evt_redline_2026",
+      "userId": "usr_854782460c3bd1a62b935322",
+      "formId": "form_invite",
+      "answers": {
+        "instagram": "abc",
+        "occupation": "abc",
+        "invited_by": "abc",
+        "heard_from": "Other",
+        "why_join": "abc",
+        "age_confirmed": true,
+        "media_consent": true,
+        "sponsor_consent": true
+      },
+      "status": "approved",
+      "adminNotes": "",
+      "duplicateFlags": [],
+      "createdAt": "2026-07-17T04:26:15.995Z",
+      "updatedAt": "2026-07-17T04:27:05.187Z",
+      "reviewedAt": "2026-07-17T04:27:05.187Z",
+      "reviewedBy": "local-admin"
+    },
+    {
+      "id": "app_0086b11113f26a2f528a1fee",
+      "eventId": "evt_redline_2026",
+      "userId": "usr_67a5fab59d2dd9c8695e394e",
+      "formId": "form_invite",
+      "answers": {
+        "instagram": "@bcd",
+        "occupation": "abc",
+        "invited_by": "abc",
+        "heard_from": "Instagram",
+        "why_join": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "age_confirmed": true,
+        "undefined": ""
+      },
+      "status": "approved",
+      "adminNotes": "",
+      "duplicateFlags": [],
+      "createdAt": "2026-07-17T05:53:35.004Z",
+      "updatedAt": "2026-07-17T05:54:08.808Z",
+      "reviewedAt": "2026-07-17T05:54:08.808Z",
+      "reviewedBy": "local-admin"
+    }
+  ],
+  "allocations": [
+    {
+      "id": "alloc_644e10c3c67881900e6a845f",
+      "eventId": "evt_redline_2026",
+      "userId": "usr_854782460c3bd1a62b935322",
+      "applicationId": "app_2af621530b58b3d3430fb5f4",
+      "ticketTypeId": "tt_first_release",
+      "maxQuantity": 2,
+      "purchasedQuantity": 1,
+      "priceCents": 4500,
+      "status": "ticket_issued",
+      "expiresAt": "2026-07-19T04:27:05.188Z",
+      "approvedBy": "local-admin",
+      "approvedAt": "2026-07-17T04:27:05.188Z"
+    },
+    {
+      "id": "alloc_5720ecb6e151b10e88a77f3e",
+      "eventId": "evt_redline_2026",
+      "userId": "usr_67a5fab59d2dd9c8695e394e",
+      "applicationId": "app_0086b11113f26a2f528a1fee",
+      "ticketTypeId": "tt_first_release",
+      "maxQuantity": 2,
+      "purchasedQuantity": 1,
+      "priceCents": 4500,
+      "status": "ticket_issued",
+      "expiresAt": "2026-07-19T05:54:08.808Z",
+      "approvedBy": "local-admin",
+      "approvedAt": "2026-07-17T05:54:08.808Z"
+    }
+  ],
+  "orders": [
+    {
+      "id": "ord_b87ae5c9041c8fb061274a9c",
+      "eventId": "evt_redline_2026",
+      "userId": "usr_854782460c3bd1a62b935322",
+      "allocationId": "alloc_644e10c3c67881900e6a845f",
+      "status": "paid",
+      "currency": "AUD",
+      "subtotalCents": 4500,
+      "totalCents": 4500,
+      "items": [
+        {
+          "kind": "ticket",
+          "referenceId": "tt_first_release",
+          "name": "First Release",
+          "quantity": 1,
+          "unitPriceCents": 4500
+        }
+      ],
+      "idempotencyKey": "idem_85448b536fcdf5c7287ef765",
+      "createdAt": "2026-07-17T04:28:27.296Z",
+      "updatedAt": "2026-07-17T04:28:36.887Z",
+      "expiresAt": "2026-07-17T05:28:27.296Z",
+      "paidAt": "2026-07-17T04:28:36.887Z"
+    },
+    {
+      "id": "ord_a3b3e57f06d3f9e7fe206fd5",
+      "eventId": "evt_redline_2026",
+      "userId": "usr_67a5fab59d2dd9c8695e394e",
+      "allocationId": "alloc_5720ecb6e151b10e88a77f3e",
+      "status": "paid",
+      "currency": "AUD",
+      "subtotalCents": 4500,
+      "totalCents": 4500,
+      "items": [
+        {
+          "kind": "ticket",
+          "referenceId": "tt_first_release",
+          "name": "First Release",
+          "quantity": 1,
+          "unitPriceCents": 4500
+        }
+      ],
+      "idempotencyKey": "idem_c3ad32492ed6a85f8d7f26c0",
+      "createdAt": "2026-07-17T05:54:35.396Z",
+      "updatedAt": "2026-07-17T05:54:37.559Z",
+      "expiresAt": "2026-07-17T06:54:35.396Z",
+      "paidAt": "2026-07-17T05:54:37.559Z"
+    }
+  ],
+  "payments": [
+    {
+      "id": "pay_44d86a9b069737d08947b402",
+      "orderId": "ord_b87ae5c9041c8fb061274a9c",
+      "provider": "test",
+      "providerReference": "test_1784262516880",
+      "amountCents": 4500,
+      "currency": "AUD",
+      "status": "paid",
+      "createdAt": "2026-07-17T04:28:36.887Z",
+      "updatedAt": "2026-07-17T04:28:36.887Z"
+    },
+    {
+      "id": "pay_7909b8b6055acdc002f11a15",
+      "orderId": "ord_a3b3e57f06d3f9e7fe206fd5",
+      "provider": "test",
+      "providerReference": "test_1784267677555",
+      "amountCents": 4500,
+      "currency": "AUD",
+      "status": "paid",
+      "createdAt": "2026-07-17T05:54:37.559Z",
+      "updatedAt": "2026-07-17T05:54:37.559Z"
+    }
+  ],
+  "tickets": [
+    {
+      "id": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "eventId": "evt_redline_2026",
+      "userId": "usr_854782460c3bd1a62b935322",
+      "orderId": "ord_b87ae5c9041c8fb061274a9c",
+      "ticketTypeId": "tt_first_release",
+      "ticketCode": "SKIE-30FD-0C06-FE9A",
+      "tokenHash": "b68dd3aad89e1739e0d9e4cdd39001aa57b754ed02857688a381e07949a79898",
+      "tokenPreview": "A4Qz17OK",
+      "status": "checked_in",
+      "holderName": "abc cbd",
+      "holderEmail": "janmayjaiyadav73@gmail.com",
+      "createdAt": "2026-07-17T04:28:36.887Z",
+      "checkedInAt": "2026-07-17T04:31:12.188Z",
+      "checkedInBy": "local-admin"
+    },
+    {
+      "id": "tkt_7c5dbdd64117828a9db218a1",
+      "eventId": "evt_redline_2026",
+      "userId": "usr_67a5fab59d2dd9c8695e394e",
+      "orderId": "ord_a3b3e57f06d3f9e7fe206fd5",
+      "ticketTypeId": "tt_first_release",
+      "ticketCode": "SKIE-828A-9DB2-18A1",
+      "tokenHash": "07393b4f54d5492e92979b9974c26bfb9743384662ef07b3f124c839e5f10518",
+      "tokenPreview": "iJWRgWZ5",
+      "status": "valid",
+      "holderName": "bcd bcd",
+      "holderEmail": "janmayjaiyadav59@gmail.com",
+      "createdAt": "2026-07-17T05:54:37.559Z"
+    }
+  ],
+  "entitlements": [],
+  "checkIns": [
+    {
+      "id": "scan_e96596b56d758da96415f448",
+      "eventId": "evt_redline_2026",
+      "ticketId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "scannedBy": "local-admin",
+      "result": "valid",
+      "notes": "Manual door lookup",
+      "scannedAt": "2026-07-17T04:31:12.188Z"
+    },
+    {
+      "id": "scan_3d7b461dddc8633d5e3ad19f",
+      "eventId": "evt_redline_2026",
+      "ticketId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "scannedBy": "local-admin",
+      "result": "already_checked_in",
+      "notes": "",
+      "scannedAt": "2026-07-17T05:10:07.064Z"
+    },
+    {
+      "id": "scan_d1442903a1484e1e4e6e4c20",
+      "eventId": "evt_redline_2026",
+      "ticketId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "scannedBy": "local-admin",
+      "result": "already_checked_in",
+      "notes": "",
+      "scannedAt": "2026-07-17T05:10:07.191Z"
+    },
+    {
+      "id": "scan_a01be26cb1f496340c5af058",
+      "eventId": "evt_redline_2026",
+      "ticketId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "scannedBy": "local-admin",
+      "result": "already_checked_in",
+      "notes": "",
+      "scannedAt": "2026-07-17T05:10:07.316Z"
+    },
+    {
+      "id": "scan_b912b177a9cd27c704cfc9a2",
+      "eventId": "evt_redline_2026",
+      "ticketId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "scannedBy": "local-admin",
+      "result": "already_checked_in",
+      "notes": "",
+      "scannedAt": "2026-07-17T05:10:10.877Z"
+    },
+    {
+      "id": "scan_b2c0fec2844d2c602adc3f42",
+      "eventId": "evt_redline_2026",
+      "ticketId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "scannedBy": "local-admin",
+      "result": "already_checked_in",
+      "notes": "",
+      "scannedAt": "2026-07-17T05:10:11.219Z"
+    },
+    {
+      "id": "scan_920b4fae2c35195ca17eb5a4",
+      "eventId": "evt_redline_2026",
+      "ticketId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "scannedBy": "local-admin",
+      "result": "already_checked_in",
+      "notes": "",
+      "scannedAt": "2026-07-17T05:10:11.328Z"
+    },
+    {
+      "id": "scan_10243c00f51ac3bda1a91a8e",
+      "eventId": "evt_redline_2026",
+      "ticketId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "scannedBy": "local-admin",
+      "result": "already_checked_in",
+      "notes": "",
+      "scannedAt": "2026-07-17T05:10:11.708Z"
+    },
+    {
+      "id": "scan_137a854b9f58437e7efc200b",
+      "eventId": "evt_redline_2026",
+      "ticketId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "scannedBy": "local-admin",
+      "result": "already_checked_in",
+      "notes": "",
+      "scannedAt": "2026-07-17T05:10:11.855Z"
+    },
+    {
+      "id": "scan_11dae87a1043ae5b3f6327ce",
+      "eventId": "evt_redline_2026",
+      "ticketId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "scannedBy": "local-admin",
+      "result": "already_checked_in",
+      "notes": "",
+      "scannedAt": "2026-07-17T05:10:11.973Z"
+    },
+    {
+      "id": "scan_65f47aaa5515ff0506886891",
+      "eventId": "evt_redline_2026",
+      "ticketId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "scannedBy": "local-admin",
+      "result": "already_checked_in",
+      "notes": "",
+      "scannedAt": "2026-07-17T05:10:12.081Z"
+    },
+    {
+      "id": "scan_932c53b4650863dfd8fd9518",
+      "eventId": "evt_redline_2026",
+      "ticketId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "scannedBy": "local-admin",
+      "result": "already_checked_in",
+      "notes": "",
+      "scannedAt": "2026-07-17T05:10:12.206Z"
+    },
+    {
+      "id": "scan_5727716d0219c35bbc30d250",
+      "eventId": "evt_redline_2026",
+      "ticketId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "scannedBy": "local-admin",
+      "result": "already_checked_in",
+      "notes": "",
+      "scannedAt": "2026-07-17T05:10:12.336Z"
+    },
+    {
+      "id": "scan_cd0194ce80ad22e0a5e41075",
+      "eventId": "evt_redline_2026",
+      "ticketId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "scannedBy": "local-admin",
+      "result": "already_checked_in",
+      "notes": "",
+      "scannedAt": "2026-07-17T05:10:12.458Z"
+    },
+    {
+      "id": "scan_f1041e71b8644a04622cc7da",
+      "eventId": "evt_redline_2026",
+      "ticketId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "scannedBy": "local-admin",
+      "result": "already_checked_in",
+      "notes": "",
+      "scannedAt": "2026-07-17T05:10:12.576Z"
+    },
+    {
+      "id": "scan_b9217bbe69eebf6d1f49db6e",
+      "eventId": "evt_redline_2026",
+      "ticketId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "scannedBy": "local-admin",
+      "result": "already_checked_in",
+      "notes": "",
+      "scannedAt": "2026-07-17T05:10:12.779Z"
+    },
+    {
+      "id": "scan_fa64f8355ba3fcbf91f2e149",
+      "eventId": "evt_redline_2026",
+      "ticketId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "scannedBy": "local-admin",
+      "result": "already_checked_in",
+      "notes": "",
+      "scannedAt": "2026-07-17T05:10:12.973Z"
+    },
+    {
+      "id": "scan_928ea9c0b7d319a099b93a73",
+      "eventId": "evt_redline_2026",
+      "ticketId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "scannedBy": "local-admin",
+      "result": "already_checked_in",
+      "notes": "",
+      "scannedAt": "2026-07-17T05:10:13.344Z"
+    },
+    {
+      "id": "scan_64d28367673676b695e0ab7a",
+      "eventId": "evt_redline_2026",
+      "ticketId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "scannedBy": "local-admin",
+      "result": "already_checked_in",
+      "notes": "",
+      "scannedAt": "2026-07-17T05:10:13.471Z"
+    },
+    {
+      "id": "scan_b2a5e23681e921618f45c067",
+      "eventId": "evt_redline_2026",
+      "ticketId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "scannedBy": "local-admin",
+      "result": "already_checked_in",
+      "notes": "",
+      "scannedAt": "2026-07-17T05:10:13.579Z"
+    },
+    {
+      "id": "scan_f018096481d4a807da14e493",
+      "eventId": "evt_redline_2026",
+      "ticketId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "scannedBy": "local-admin",
+      "result": "already_checked_in",
+      "notes": "",
+      "scannedAt": "2026-07-17T05:10:13.687Z"
+    },
+    {
+      "id": "scan_0563831e202f68384ce1dbc9",
+      "eventId": "evt_redline_2026",
+      "ticketId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "scannedBy": "local-admin",
+      "result": "already_checked_in",
+      "notes": "",
+      "scannedAt": "2026-07-17T05:10:13.795Z"
+    },
+    {
+      "id": "scan_c2e1cd4d3ea42b3bb7e74507",
+      "eventId": "evt_redline_2026",
+      "ticketId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "scannedBy": "local-admin",
+      "result": "already_checked_in",
+      "notes": "",
+      "scannedAt": "2026-07-17T05:10:13.954Z"
+    },
+    {
+      "id": "scan_14cc617a3b551c03aad04aaa",
+      "eventId": "evt_redline_2026",
+      "ticketId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "scannedBy": "local-admin",
+      "result": "already_checked_in",
+      "notes": "",
+      "scannedAt": "2026-07-17T05:10:14.060Z"
+    },
+    {
+      "id": "scan_40026ec537e1d82b1bb2638d",
+      "eventId": "evt_redline_2026",
+      "ticketId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "scannedBy": "local-admin",
+      "result": "already_checked_in",
+      "notes": "",
+      "scannedAt": "2026-07-17T05:10:14.173Z"
+    },
+    {
+      "id": "scan_58c6271d1b59ea654969642c",
+      "eventId": "evt_redline_2026",
+      "ticketId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "scannedBy": "local-admin",
+      "result": "already_checked_in",
+      "notes": "",
+      "scannedAt": "2026-07-17T05:10:14.280Z"
+    },
+    {
+      "id": "scan_bd97062085d1e6dff801080b",
+      "eventId": "evt_redline_2026",
+      "ticketId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "scannedBy": "local-admin",
+      "result": "already_checked_in",
+      "notes": "",
+      "scannedAt": "2026-07-17T05:10:14.404Z"
+    },
+    {
+      "id": "scan_bf4b653e1d665105016ac9ca",
+      "eventId": "evt_redline_2026",
+      "ticketId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "scannedBy": "local-admin",
+      "result": "already_checked_in",
+      "notes": "",
+      "scannedAt": "2026-07-17T05:10:14.515Z"
+    },
+    {
+      "id": "scan_85cbba1a5ff033990fb4b8ae",
+      "eventId": "evt_redline_2026",
+      "ticketId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "scannedBy": "local-admin",
+      "result": "already_checked_in",
+      "notes": "",
+      "scannedAt": "2026-07-17T05:10:14.641Z"
+    },
+    {
+      "id": "scan_7c4f29dc9a3a86e50a695ef5",
+      "eventId": "evt_redline_2026",
+      "ticketId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "scannedBy": "local-admin",
+      "result": "already_checked_in",
+      "notes": "",
+      "scannedAt": "2026-07-17T05:10:14.749Z"
+    },
+    {
+      "id": "scan_a15347651319974a4f47377a",
+      "eventId": "evt_redline_2026",
+      "ticketId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "scannedBy": "local-admin",
+      "result": "already_checked_in",
+      "notes": "",
+      "scannedAt": "2026-07-17T05:10:14.878Z"
+    },
+    {
+      "id": "scan_e74669fce6ebba12aa90caac",
+      "eventId": "evt_redline_2026",
+      "ticketId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "scannedBy": "local-admin",
+      "result": "already_checked_in",
+      "notes": "",
+      "scannedAt": "2026-07-17T05:10:14.985Z"
+    }
+  ],
+  "emailLogs": [
+    {
+      "id": "email_50273cf060531abc6a0a9c55",
+      "templateKey": "application_received",
+      "to": "janmayjaiyadav73@gmail.com",
+      "subject": "We received your Redline House Party application",
+      "html": "<div style=\"background:#050505;color:#f7f7fb;font-family:Arial,sans-serif;padding:32px\"><div style=\"max-width:620px;margin:auto\"><div style=\"font-weight:900;letter-spacing:.18em;color:#7890ff;margin-bottom:24px\">SKIE EVENTS</div><h1>Application received.</h1><p>Hi abc, your application for <strong>Redline House Party</strong> is now under review.</p><hr style=\"border:0;border-top:1px solid #292932;margin:30px 0\"><p style=\"color:#9b9ba4;font-size:12px\">Questions? Reply to hello@skieevents.com.</p></div></div>",
+      "status": "test_outbox",
+      "idempotencyKey": "application_received:app_2af621530b58b3d3430fb5f4",
+      "createdAt": "2026-07-17T04:26:16.017Z"
+    },
+    {
+      "id": "email_499fb38e3444d23b6f633ae4",
+      "templateKey": "ticket_unlocked",
+      "to": "janmayjaiyadav73@gmail.com",
+      "subject": "Your Redline House Party ticket is unlocked",
+      "html": "<div style=\"background:#050505;color:#f7f7fb;font-family:Arial,sans-serif;padding:32px\"><div style=\"max-width:620px;margin:auto\"><div style=\"font-weight:900;letter-spacing:.18em;color:#7890ff;margin-bottom:24px\">SKIE EVENTS</div><h1>Your ticket is unlocked.</h1><p>Hi abc, log in to buy up to 2 ticket(s) before 19/07/2026, 2:27:05 pm.</p><p><a href=\"http://localhost:3000/account\">Open your account</a></p><hr style=\"border:0;border-top:1px solid #292932;margin:30px 0\"><p style=\"color:#9b9ba4;font-size:12px\">Questions? Reply to hello@skieevents.com.</p></div></div>",
+      "status": "test_outbox",
+      "idempotencyKey": "ticket_unlocked:app_2af621530b58b3d3430fb5f4:2026-07-17T04:27:05.187Z",
+      "createdAt": "2026-07-17T04:27:05.217Z"
+    },
+    {
+      "id": "email_b4acf3bf448e0039ca946473",
+      "templateKey": "ticket_issued",
+      "to": "janmayjaiyadav73@gmail.com",
+      "subject": "Your Redline House Party ticket is ready",
+      "html": "<div style=\"background:#050505;color:#f7f7fb;font-family:Arial,sans-serif;padding:32px\"><div style=\"max-width:620px;margin:auto\"><div style=\"font-weight:900;letter-spacing:.18em;color:#7890ff;margin-bottom:24px\">SKIE EVENTS</div><h1>You are in.</h1><p>Your ticket for <strong>Redline House Party</strong> is available in your account.</p><p><a href=\"http://localhost:3000/account/tickets/tkt_b9b8d6df8fff30fd0c06fe9a\">Open ticket</a></p><hr style=\"border:0;border-top:1px solid #292932;margin:30px 0\"><p style=\"color:#9b9ba4;font-size:12px\">Questions? Reply to hello@skieevents.com.</p></div></div>",
+      "status": "test_outbox",
+      "idempotencyKey": "ticket_issued:ord_b87ae5c9041c8fb061274a9c",
+      "createdAt": "2026-07-17T04:28:36.933Z"
+    },
+    {
+      "id": "email_cffa1ad96b3071b69cdd91be",
+      "templateKey": "application_received",
+      "to": "janmayjaiyadav59@gmail.com",
+      "subject": "We received your Redline House Party application",
+      "html": "<div style=\"background:#050505;color:#f7f7fb;font-family:Arial,sans-serif;padding:32px\"><div style=\"max-width:620px;margin:auto\"><div style=\"font-weight:900;letter-spacing:.18em;color:#7890ff;margin-bottom:24px\">SKIE EVENTS</div><h1>Application received.</h1><p>Hi bcd, your application for <strong>Redline House Party</strong> is now under review.</p><hr style=\"border:0;border-top:1px solid #292932;margin:30px 0\"><p style=\"color:#9b9ba4;font-size:12px\">Questions? Reply to hello@skieevents.com.</p></div></div>",
+      "status": "test_outbox",
+      "idempotencyKey": "application_received:app_0086b11113f26a2f528a1fee",
+      "createdAt": "2026-07-17T05:53:35.040Z"
+    },
+    {
+      "id": "email_6656d5c4032f4f012eddba3d",
+      "templateKey": "ticket_unlocked",
+      "to": "janmayjaiyadav59@gmail.com",
+      "subject": "Your Redline House Party ticket is unlocked",
+      "html": "<div style=\"background:#050505;color:#f7f7fb;font-family:Arial,sans-serif;padding:32px\"><div style=\"max-width:620px;margin:auto\"><div style=\"font-weight:900;letter-spacing:.18em;color:#7890ff;margin-bottom:24px\">SKIE EVENTS</div><h1>Your ticket is unlocked.</h1><p>Hi bcd, log in to buy up to 2 ticket(s) before 19/07/2026, 3:54:08 pm.</p><p><a href=\"http://localhost:3000/account\">Open your account</a></p><hr style=\"border:0;border-top:1px solid #292932;margin:30px 0\"><p style=\"color:#9b9ba4;font-size:12px\">Questions? Reply to hello@skieevents.com.</p></div></div>",
+      "status": "test_outbox",
+      "idempotencyKey": "ticket_unlocked:app_0086b11113f26a2f528a1fee:2026-07-17T05:54:08.808Z",
+      "createdAt": "2026-07-17T05:54:08.828Z"
+    },
+    {
+      "id": "email_eec0212c42dd3f4a369f0489",
+      "templateKey": "ticket_issued",
+      "to": "janmayjaiyadav59@gmail.com",
+      "subject": "Your Redline House Party ticket is ready",
+      "html": "<div style=\"background:#050505;color:#f7f7fb;font-family:Arial,sans-serif;padding:32px\"><div style=\"max-width:620px;margin:auto\"><div style=\"font-weight:900;letter-spacing:.18em;color:#7890ff;margin-bottom:24px\">SKIE EVENTS</div><h1>You are in.</h1><p>Your ticket for <strong>Redline House Party</strong> is available in your account.</p><p><a href=\"http://localhost:3000/account/tickets/tkt_7c5dbdd64117828a9db218a1\">Open ticket</a></p><hr style=\"border:0;border-top:1px solid #292932;margin:30px 0\"><p style=\"color:#9b9ba4;font-size:12px\">Questions? Reply to hello@skieevents.com.</p></div></div>",
+      "status": "test_outbox",
+      "idempotencyKey": "ticket_issued:ord_a3b3e57f06d3f9e7fe206fd5",
+      "createdAt": "2026-07-17T05:54:37.590Z"
+    }
+  ],
+  "auditLogs": [
+    {
+      "id": "audit_780d99665335b5e9446a2be5",
+      "actorId": "usr_854782460c3bd1a62b935322",
+      "actorEmail": "janmayjaiyadav73@gmail.com",
+      "action": "customer.signup",
+      "entityType": "user",
+      "entityId": "usr_854782460c3bd1a62b935322",
+      "metadata": {},
+      "createdAt": "2026-07-17T04:25:42.842Z"
+    },
+    {
+      "id": "audit_239d205fca31984a4198b324",
+      "actorId": "usr_854782460c3bd1a62b935322",
+      "actorEmail": "janmayjaiyadav73@gmail.com",
+      "action": "application.submitted",
+      "entityType": "application",
+      "entityId": "app_2af621530b58b3d3430fb5f4",
+      "metadata": {
+        "eventId": "evt_redline_2026"
+      },
+      "createdAt": "2026-07-17T04:26:15.995Z"
+    },
+    {
+      "id": "audit_a49de9740a4f75d41a1ec3b8",
+      "actorId": "local-admin",
+      "actorEmail": "admin@skieevents.com",
+      "action": "application.approved",
+      "entityType": "application",
+      "entityId": "app_2af621530b58b3d3430fb5f4",
+      "metadata": {
+        "eventId": "evt_redline_2026",
+        "customerId": "usr_854782460c3bd1a62b935322"
+      },
+      "createdAt": "2026-07-17T04:27:05.188Z"
+    },
+    {
+      "id": "audit_46868dbeba3950f42619e615",
+      "actorId": "usr_854782460c3bd1a62b935322",
+      "actorEmail": "janmayjaiyadav73@gmail.com",
+      "action": "order.created",
+      "entityType": "order",
+      "entityId": "ord_b87ae5c9041c8fb061274a9c",
+      "metadata": {
+        "eventId": "evt_redline_2026",
+        "totalCents": 4500,
+        "expiresAt": "2026-07-17T05:28:27.296Z"
+      },
+      "createdAt": "2026-07-17T04:28:27.296Z"
+    },
+    {
+      "id": "audit_113cbe1855d426f6d4b3060e",
+      "actorId": "test",
+      "actorEmail": "test",
+      "action": "order.fulfilled",
+      "entityType": "order",
+      "entityId": "ord_b87ae5c9041c8fb061274a9c",
+      "metadata": {
+        "tickets": 1,
+        "providerReference": "test_1784262516880"
+      },
+      "createdAt": "2026-07-17T04:28:36.887Z"
+    },
+    {
+      "id": "audit_c6a9b7c1f45c18a8db4199d2",
+      "actorId": "local-admin",
+      "actorEmail": "admin@skieevents.com",
+      "action": "ticket.manual_check_in.valid",
+      "entityType": "ticket",
+      "entityId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "metadata": {
+        "eventId": "evt_redline_2026"
+      },
+      "createdAt": "2026-07-17T04:31:12.188Z"
+    },
+    {
+      "id": "audit_6a746a4a1b23d85000f92336",
+      "actorId": "local-admin",
+      "actorEmail": "admin@skieevents.com",
+      "action": "ticket.scan.already_checked_in",
+      "entityType": "ticket",
+      "entityId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "metadata": {
+        "eventId": "evt_redline_2026"
+      },
+      "createdAt": "2026-07-17T05:10:07.064Z"
+    },
+    {
+      "id": "audit_d14c46145651d318831e4c83",
+      "actorId": "local-admin",
+      "actorEmail": "admin@skieevents.com",
+      "action": "ticket.scan.already_checked_in",
+      "entityType": "ticket",
+      "entityId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "metadata": {
+        "eventId": "evt_redline_2026"
+      },
+      "createdAt": "2026-07-17T05:10:07.191Z"
+    },
+    {
+      "id": "audit_5a2eeef06877881d274fdb4d",
+      "actorId": "local-admin",
+      "actorEmail": "admin@skieevents.com",
+      "action": "ticket.scan.already_checked_in",
+      "entityType": "ticket",
+      "entityId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "metadata": {
+        "eventId": "evt_redline_2026"
+      },
+      "createdAt": "2026-07-17T05:10:07.316Z"
+    },
+    {
+      "id": "audit_06396ee1af4c4dc3bf43df33",
+      "actorId": "local-admin",
+      "actorEmail": "admin@skieevents.com",
+      "action": "ticket.scan.already_checked_in",
+      "entityType": "ticket",
+      "entityId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "metadata": {
+        "eventId": "evt_redline_2026"
+      },
+      "createdAt": "2026-07-17T05:10:10.877Z"
+    },
+    {
+      "id": "audit_7343fa4d250938b717ee6f3f",
+      "actorId": "local-admin",
+      "actorEmail": "admin@skieevents.com",
+      "action": "ticket.scan.already_checked_in",
+      "entityType": "ticket",
+      "entityId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "metadata": {
+        "eventId": "evt_redline_2026"
+      },
+      "createdAt": "2026-07-17T05:10:11.219Z"
+    },
+    {
+      "id": "audit_9cb8bd42d50d120fc92148fa",
+      "actorId": "local-admin",
+      "actorEmail": "admin@skieevents.com",
+      "action": "ticket.scan.already_checked_in",
+      "entityType": "ticket",
+      "entityId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "metadata": {
+        "eventId": "evt_redline_2026"
+      },
+      "createdAt": "2026-07-17T05:10:11.328Z"
+    },
+    {
+      "id": "audit_0f9d7c042200b6a98165a9e3",
+      "actorId": "local-admin",
+      "actorEmail": "admin@skieevents.com",
+      "action": "ticket.scan.already_checked_in",
+      "entityType": "ticket",
+      "entityId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "metadata": {
+        "eventId": "evt_redline_2026"
+      },
+      "createdAt": "2026-07-17T05:10:11.708Z"
+    },
+    {
+      "id": "audit_f2b8234919c94ed4f4062a4c",
+      "actorId": "local-admin",
+      "actorEmail": "admin@skieevents.com",
+      "action": "ticket.scan.already_checked_in",
+      "entityType": "ticket",
+      "entityId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "metadata": {
+        "eventId": "evt_redline_2026"
+      },
+      "createdAt": "2026-07-17T05:10:11.855Z"
+    },
+    {
+      "id": "audit_8535d176f9cfd4bb7b029a50",
+      "actorId": "local-admin",
+      "actorEmail": "admin@skieevents.com",
+      "action": "ticket.scan.already_checked_in",
+      "entityType": "ticket",
+      "entityId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "metadata": {
+        "eventId": "evt_redline_2026"
+      },
+      "createdAt": "2026-07-17T05:10:11.973Z"
+    },
+    {
+      "id": "audit_0f433a39bb4e7e93f69862b4",
+      "actorId": "local-admin",
+      "actorEmail": "admin@skieevents.com",
+      "action": "ticket.scan.already_checked_in",
+      "entityType": "ticket",
+      "entityId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "metadata": {
+        "eventId": "evt_redline_2026"
+      },
+      "createdAt": "2026-07-17T05:10:12.081Z"
+    },
+    {
+      "id": "audit_22ef3995523963bb124f92a6",
+      "actorId": "local-admin",
+      "actorEmail": "admin@skieevents.com",
+      "action": "ticket.scan.already_checked_in",
+      "entityType": "ticket",
+      "entityId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "metadata": {
+        "eventId": "evt_redline_2026"
+      },
+      "createdAt": "2026-07-17T05:10:12.206Z"
+    },
+    {
+      "id": "audit_173363066c8de4b6cb50325f",
+      "actorId": "local-admin",
+      "actorEmail": "admin@skieevents.com",
+      "action": "ticket.scan.already_checked_in",
+      "entityType": "ticket",
+      "entityId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "metadata": {
+        "eventId": "evt_redline_2026"
+      },
+      "createdAt": "2026-07-17T05:10:12.336Z"
+    },
+    {
+      "id": "audit_41df3736f7bbecb9c809ce40",
+      "actorId": "local-admin",
+      "actorEmail": "admin@skieevents.com",
+      "action": "ticket.scan.already_checked_in",
+      "entityType": "ticket",
+      "entityId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "metadata": {
+        "eventId": "evt_redline_2026"
+      },
+      "createdAt": "2026-07-17T05:10:12.458Z"
+    },
+    {
+      "id": "audit_faea24c06ae8f79428aef698",
+      "actorId": "local-admin",
+      "actorEmail": "admin@skieevents.com",
+      "action": "ticket.scan.already_checked_in",
+      "entityType": "ticket",
+      "entityId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "metadata": {
+        "eventId": "evt_redline_2026"
+      },
+      "createdAt": "2026-07-17T05:10:12.576Z"
+    },
+    {
+      "id": "audit_5b16f0b3048f723b189473f5",
+      "actorId": "local-admin",
+      "actorEmail": "admin@skieevents.com",
+      "action": "ticket.scan.already_checked_in",
+      "entityType": "ticket",
+      "entityId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "metadata": {
+        "eventId": "evt_redline_2026"
+      },
+      "createdAt": "2026-07-17T05:10:12.779Z"
+    },
+    {
+      "id": "audit_6d165a3af7f15815f2013ac5",
+      "actorId": "local-admin",
+      "actorEmail": "admin@skieevents.com",
+      "action": "ticket.scan.already_checked_in",
+      "entityType": "ticket",
+      "entityId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "metadata": {
+        "eventId": "evt_redline_2026"
+      },
+      "createdAt": "2026-07-17T05:10:12.973Z"
+    },
+    {
+      "id": "audit_1e877ab69f2b03ff7534458b",
+      "actorId": "local-admin",
+      "actorEmail": "admin@skieevents.com",
+      "action": "ticket.scan.already_checked_in",
+      "entityType": "ticket",
+      "entityId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "metadata": {
+        "eventId": "evt_redline_2026"
+      },
+      "createdAt": "2026-07-17T05:10:13.344Z"
+    },
+    {
+      "id": "audit_68f1534d07f22fafc7e282a7",
+      "actorId": "local-admin",
+      "actorEmail": "admin@skieevents.com",
+      "action": "ticket.scan.already_checked_in",
+      "entityType": "ticket",
+      "entityId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "metadata": {
+        "eventId": "evt_redline_2026"
+      },
+      "createdAt": "2026-07-17T05:10:13.471Z"
+    },
+    {
+      "id": "audit_a904235fdaf760472194a216",
+      "actorId": "local-admin",
+      "actorEmail": "admin@skieevents.com",
+      "action": "ticket.scan.already_checked_in",
+      "entityType": "ticket",
+      "entityId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "metadata": {
+        "eventId": "evt_redline_2026"
+      },
+      "createdAt": "2026-07-17T05:10:13.579Z"
+    },
+    {
+      "id": "audit_16352c2c5c2dc480a5e1675c",
+      "actorId": "local-admin",
+      "actorEmail": "admin@skieevents.com",
+      "action": "ticket.scan.already_checked_in",
+      "entityType": "ticket",
+      "entityId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "metadata": {
+        "eventId": "evt_redline_2026"
+      },
+      "createdAt": "2026-07-17T05:10:13.687Z"
+    },
+    {
+      "id": "audit_e0e468215df3bb2db6b5a175",
+      "actorId": "local-admin",
+      "actorEmail": "admin@skieevents.com",
+      "action": "ticket.scan.already_checked_in",
+      "entityType": "ticket",
+      "entityId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "metadata": {
+        "eventId": "evt_redline_2026"
+      },
+      "createdAt": "2026-07-17T05:10:13.795Z"
+    },
+    {
+      "id": "audit_50e84d2b925ac29f2c962103",
+      "actorId": "local-admin",
+      "actorEmail": "admin@skieevents.com",
+      "action": "ticket.scan.already_checked_in",
+      "entityType": "ticket",
+      "entityId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "metadata": {
+        "eventId": "evt_redline_2026"
+      },
+      "createdAt": "2026-07-17T05:10:13.954Z"
+    },
+    {
+      "id": "audit_a54e584506b83d067292c8d2",
+      "actorId": "local-admin",
+      "actorEmail": "admin@skieevents.com",
+      "action": "ticket.scan.already_checked_in",
+      "entityType": "ticket",
+      "entityId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "metadata": {
+        "eventId": "evt_redline_2026"
+      },
+      "createdAt": "2026-07-17T05:10:14.060Z"
+    },
+    {
+      "id": "audit_a2711dc1c4f6b2f955a47a26",
+      "actorId": "local-admin",
+      "actorEmail": "admin@skieevents.com",
+      "action": "ticket.scan.already_checked_in",
+      "entityType": "ticket",
+      "entityId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "metadata": {
+        "eventId": "evt_redline_2026"
+      },
+      "createdAt": "2026-07-17T05:10:14.173Z"
+    },
+    {
+      "id": "audit_5ee54bef8fad05d11dc9c677",
+      "actorId": "local-admin",
+      "actorEmail": "admin@skieevents.com",
+      "action": "ticket.scan.already_checked_in",
+      "entityType": "ticket",
+      "entityId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "metadata": {
+        "eventId": "evt_redline_2026"
+      },
+      "createdAt": "2026-07-17T05:10:14.280Z"
+    },
+    {
+      "id": "audit_de6f57ac80ac043bcb31d0da",
+      "actorId": "local-admin",
+      "actorEmail": "admin@skieevents.com",
+      "action": "ticket.scan.already_checked_in",
+      "entityType": "ticket",
+      "entityId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "metadata": {
+        "eventId": "evt_redline_2026"
+      },
+      "createdAt": "2026-07-17T05:10:14.404Z"
+    },
+    {
+      "id": "audit_92d9550f4601a955d68af92d",
+      "actorId": "local-admin",
+      "actorEmail": "admin@skieevents.com",
+      "action": "ticket.scan.already_checked_in",
+      "entityType": "ticket",
+      "entityId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "metadata": {
+        "eventId": "evt_redline_2026"
+      },
+      "createdAt": "2026-07-17T05:10:14.515Z"
+    },
+    {
+      "id": "audit_36864a59a181686a48002f75",
+      "actorId": "local-admin",
+      "actorEmail": "admin@skieevents.com",
+      "action": "ticket.scan.already_checked_in",
+      "entityType": "ticket",
+      "entityId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "metadata": {
+        "eventId": "evt_redline_2026"
+      },
+      "createdAt": "2026-07-17T05:10:14.641Z"
+    },
+    {
+      "id": "audit_ae5a47acce1c8611b6944a7f",
+      "actorId": "local-admin",
+      "actorEmail": "admin@skieevents.com",
+      "action": "ticket.scan.already_checked_in",
+      "entityType": "ticket",
+      "entityId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "metadata": {
+        "eventId": "evt_redline_2026"
+      },
+      "createdAt": "2026-07-17T05:10:14.749Z"
+    },
+    {
+      "id": "audit_14d94faef30bd2ad43e2dab9",
+      "actorId": "local-admin",
+      "actorEmail": "admin@skieevents.com",
+      "action": "ticket.scan.already_checked_in",
+      "entityType": "ticket",
+      "entityId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "metadata": {
+        "eventId": "evt_redline_2026"
+      },
+      "createdAt": "2026-07-17T05:10:14.878Z"
+    },
+    {
+      "id": "audit_0d2f9d00c88a42aa2a7b3d4d",
+      "actorId": "local-admin",
+      "actorEmail": "admin@skieevents.com",
+      "action": "ticket.scan.already_checked_in",
+      "entityType": "ticket",
+      "entityId": "tkt_b9b8d6df8fff30fd0c06fe9a",
+      "metadata": {
+        "eventId": "evt_redline_2026"
+      },
+      "createdAt": "2026-07-17T05:10:14.985Z"
+    },
+    {
+      "id": "audit_3f9b6ad5fe683b3349701f30",
+      "actorId": "usr_67a5fab59d2dd9c8695e394e",
+      "actorEmail": "janmayjaiyadav59@gmail.com",
+      "action": "customer.signup",
+      "entityType": "user",
+      "entityId": "usr_67a5fab59d2dd9c8695e394e",
+      "metadata": {},
+      "createdAt": "2026-07-17T05:53:00.669Z"
+    },
+    {
+      "id": "audit_421120c6baac3a575d9c8eae",
+      "actorId": "usr_67a5fab59d2dd9c8695e394e",
+      "actorEmail": "janmayjaiyadav59@gmail.com",
+      "action": "application.submitted",
+      "entityType": "application",
+      "entityId": "app_0086b11113f26a2f528a1fee",
+      "metadata": {
+        "eventId": "evt_redline_2026"
+      },
+      "createdAt": "2026-07-17T05:53:35.004Z"
+    },
+    {
+      "id": "audit_7374f8a25f3b9ed3daa24df6",
+      "actorId": "local-admin",
+      "actorEmail": "admin@skieevents.com",
+      "action": "application.approved",
+      "entityType": "application",
+      "entityId": "app_0086b11113f26a2f528a1fee",
+      "metadata": {
+        "eventId": "evt_redline_2026",
+        "customerId": "usr_67a5fab59d2dd9c8695e394e"
+      },
+      "createdAt": "2026-07-17T05:54:08.809Z"
+    },
+    {
+      "id": "audit_52689bbdfe41f50dee7b1df4",
+      "actorId": "usr_67a5fab59d2dd9c8695e394e",
+      "actorEmail": "janmayjaiyadav59@gmail.com",
+      "action": "order.created",
+      "entityType": "order",
+      "entityId": "ord_a3b3e57f06d3f9e7fe206fd5",
+      "metadata": {
+        "eventId": "evt_redline_2026",
+        "totalCents": 4500,
+        "expiresAt": "2026-07-17T06:54:35.396Z"
+      },
+      "createdAt": "2026-07-17T05:54:35.396Z"
+    },
+    {
+      "id": "audit_2bd2912d2f8df1d41d42818b",
+      "actorId": "test",
+      "actorEmail": "test",
+      "action": "order.fulfilled",
+      "entityType": "order",
+      "entityId": "ord_a3b3e57f06d3f9e7fe206fd5",
+      "metadata": {
+        "tickets": 1,
+        "providerReference": "test_1784267677555"
+      },
+      "createdAt": "2026-07-17T05:54:37.559Z"
+    }
+  ],
+  "contacts": [],
+  "newsletter": [],
+  "reservations": [],
+  "checkoutAttempts": [],
+  "stripeWebhookEvents": [],
+  "paymentAdjustments": [],
+  "paymentRecoveryActions": [],
+  "eventStaffAssignments": [],
+  "eventStaffAssignmentAudits": [],
+  "notificationOutbox": [],
+  "notificationAttempts": [],
+  "notificationPreferences": [],
+  "notificationConsents": [],
+  "notificationChannelControls": [],
+  "eventNotificationControls": [],
+  "promoCodes": [],
+  "promoRedemptions": [],
+  "mediaObjects": [],
+  "mediaVideoAssets": [],
+  "mediaProviderEvents": [],
+  "analyticsEvents": [],
+  "entitlementRedemptions": [],
+  "adminSavedFilters": [],
+  "eventLaunchReadiness": []
+}

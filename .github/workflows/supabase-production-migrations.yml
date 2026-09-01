@@ -1,0 +1,158 @@
+name: Production database migrations
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "supabase/migrations/**"
+      - ".github/workflows/supabase-production-migrations.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: production-supabase-migrations
+  cancel-in-progress: false
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: production
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
+      SUPABASE_PROJECT_ID: dgyabshzcacostpuswxs
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify production migration credentials
+        id: credentials
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -z "${SUPABASE_ACCESS_TOKEN}" ]]; then
+            echo "SUPABASE_ACCESS_TOKEN is not configured."
+            exit 1
+          fi
+          if [[ -z "${SUPABASE_DB_PASSWORD}" ]]; then
+            echo "SUPABASE_DB_PASSWORD is not configured."
+            exit 1
+          fi
+          if [[ "${SUPABASE_PROJECT_ID}" != "dgyabshzcacostpuswxs" ]]; then
+            echo "Refusing to migrate an unexpected Supabase project."
+            exit 1
+          fi
+
+      - name: Set up Supabase CLI
+        uses: supabase/setup-cli@v1
+        with:
+          version: latest
+
+      - name: Link production project
+        id: link
+        run: supabase link --project-ref "${SUPABASE_PROJECT_ID}"
+
+      - name: Inspect migration history before deployment
+        id: history_before
+        shell: bash
+        run: |
+          set -o pipefail
+          supabase migration list 2>&1 | tee migration-history-before.txt
+
+      - name: Preview pending migrations
+        id: dry_run
+        shell: bash
+        run: |
+          set -o pipefail
+          supabase db push --dry-run 2>&1 | tee migration-dry-run.txt
+
+      - name: Apply pending migrations
+        id: apply
+        shell: bash
+        run: |
+          set -o pipefail
+          supabase db push 2>&1 | tee migration-apply.txt
+
+      - name: Verify migration history
+        id: history_after
+        shell: bash
+        run: |
+          set -o pipefail
+          supabase migration list 2>&1 | tee migration-history-after.txt
+
+      - name: Publish production migration status
+        if: always()
+        continue-on-error: true
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CREDENTIALS_OUTCOME: ${{ steps.credentials.outcome }}
+          LINK_OUTCOME: ${{ steps.link.outcome }}
+          HISTORY_BEFORE_OUTCOME: ${{ steps.history_before.outcome }}
+          DRY_RUN_OUTCOME: ${{ steps.dry_run.outcome }}
+          APPLY_OUTCOME: ${{ steps.apply.outcome }}
+          HISTORY_AFTER_OUTCOME: ${{ steps.history_after.outcome }}
+        run: |
+          set -euo pipefail
+
+          final_status="success"
+          if [[ "${CREDENTIALS_OUTCOME}" != "success" \
+            || "${LINK_OUTCOME}" != "success" \
+            || "${HISTORY_BEFORE_OUTCOME}" != "success" \
+            || "${DRY_RUN_OUTCOME}" != "success" \
+            || "${APPLY_OUTCOME}" != "success" \
+            || "${HISTORY_AFTER_OUTCOME}" != "success" ]]; then
+            final_status="failure"
+          fi
+
+          run_url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          body="$(cat <<EOF
+          Production migration run: **${final_status}**
+
+          - Commit: \`${GITHUB_SHA}\`
+          - Credentials: ${CREDENTIALS_OUTCOME}
+          - Project link: ${LINK_OUTCOME}
+          - History before: ${HISTORY_BEFORE_OUTCOME}
+          - Dry run: ${DRY_RUN_OUTCOME}
+          - Apply: ${APPLY_OUTCOME}
+          - History after: ${HISTORY_AFTER_OUTCOME}
+          - Run: ${run_url}
+
+          Detailed migration output is attached to the workflow run as the \`production-migration-diagnostics\` artifact.
+          EOF
+          )"
+
+          issue_number="$(gh issue list \
+            --repo "${GITHUB_REPOSITORY}" \
+            --state open \
+            --search '"Production migration status" in:title' \
+            --json number \
+            --jq '.[0].number // empty')"
+
+          if [[ -z "${issue_number}" ]]; then
+            gh issue create \
+              --repo "${GITHUB_REPOSITORY}" \
+              --title "Production migration status" \
+              --body "${body}"
+          else
+            gh issue comment "${issue_number}" \
+              --repo "${GITHUB_REPOSITORY}" \
+              --body "${body}"
+          fi
+
+      - name: Upload migration diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-migration-diagnostics
+          path: |
+            migration-history-before.txt
+            migration-dry-run.txt
+            migration-apply.txt
+            migration-history-after.txt
+          if-no-files-found: ignore
+          retention-days: 7

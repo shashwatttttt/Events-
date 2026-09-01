@@ -1,0 +1,6 @@
+next-env.d.ts — generated-only Next.js declaration; content unchanged from HEAD
+tsconfig.tsbuildinfo — generated TypeScript build cache; content unchanged from HEAD
+supabase-local-start.txt — preserved local Supabase evidence
+supabase-local-reset.txt — preserved local Supabase evidence
+deep-bug-command-output.txt — preserved audit evidence
+visual-*.txt — preserved visual review evidence

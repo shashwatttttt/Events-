@@ -1,0 +1,133 @@
+name: Post-checkout validation
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: post-checkout-validation-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      APP_MODE: test
+      DATA_PROVIDER: local
+      NEXT_PUBLIC_SITE_URL: http://localhost:3000
+      AUTH_SECRET: ci-auth-secret-replace-only-in-ci-0001
+      TICKET_TOKEN_SECRET: ci-ticket-secret-replace-only-in-ci-0002
+      NOTIFICATION_WORKER_SECRET: ci-notification-worker-secret-0003
+      POST_CHECKOUT_APPROVAL_ENABLED: "false"
+      POST_CHECKOUT_WORKER_SECRET: ci-post-checkout-worker-secret-0004
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        id: install
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          npm ci 2>&1 | tee install.log
+
+      - name: Audit production dependencies
+        id: audit_production
+        if: steps.install.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          npm audit --omit=dev --audit-level=high 2>&1 | tee audit-production.log
+
+      - name: Enforce full dependency audit policy
+        id: audit_policy
+        if: steps.install.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          npm audit --json > audit-full.json 2> audit-full.stderr.log
+          set -e
+          node .github/scripts/verify-audit-policy.mjs audit-full.json | tee audit-policy.log
+
+      - name: Lint
+        id: lint
+        if: steps.install.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          npm run lint 2>&1 | tee lint.log
+
+      - name: Typecheck
+        id: typecheck
+        if: steps.install.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          npm run typecheck 2>&1 | tee typecheck.log
+
+      - name: Test
+        id: test
+        if: steps.install.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          npm test 2>&1 | tee test.log
+
+      - name: Build
+        id: build
+        if: steps.install.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          npm run build 2>&1 | tee build.log
+
+      - name: Upload validation diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: post-checkout-validation-logs
+          path: |
+            install.log
+            audit-production.log
+            audit-full.json
+            audit-full.stderr.log
+            audit-policy.log
+            lint.log
+            typecheck.log
+            test.log
+            build.log
+          if-no-files-found: warn
+          retention-days: 7
+
+      - name: Enforce validation result
+        if: always()
+        shell: bash
+        run: |
+          echo "install=${{ steps.install.outcome }}"
+          echo "audit_production=${{ steps.audit_production.outcome }}"
+          echo "audit_policy=${{ steps.audit_policy.outcome }}"
+          echo "lint=${{ steps.lint.outcome }}"
+          echo "typecheck=${{ steps.typecheck.outcome }}"
+          echo "test=${{ steps.test.outcome }}"
+          echo "build=${{ steps.build.outcome }}"
+          if [[ "${{ steps.install.outcome }}" != "success" || "${{ steps.audit_production.outcome }}" != "success" || "${{ steps.audit_policy.outcome }}" != "success" || "${{ steps.lint.outcome }}" != "success" || "${{ steps.typecheck.outcome }}" != "success" || "${{ steps.test.outcome }}" != "success" || "${{ steps.build.outcome }}" != "success" ]]; then
+            exit 1
+          fi
