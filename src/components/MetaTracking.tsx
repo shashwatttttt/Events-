@@ -14,18 +14,19 @@ import {
 
 export function MetaTracking({ pixelId, consentVersion }: { pixelId: string; consentVersion: string }) {
   const pathname = usePathname();
-  const [choice, setChoice] = useState<AdvertisingConsentChoice | null>(null);
+  const [choice, setChoice] = useState<AdvertisingConsentChoice | null>(() => {
+    if (typeof window === "undefined") return null;
+    return readAdvertisingConsent(consentVersion)?.choice || null;
+  });
   const [preferencesOpen, setPreferencesOpen] = useState(false);
-  const [privacyLocked, setPrivacyLocked] = useState(false);
+  const [privacyLocked] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return privacySignalBlocksAdvertising();
+  });
   const lastPageView = useRef("");
   const excluded = pathname.startsWith("/skie-control");
 
   useEffect(() => {
-    setPrivacyLocked(privacySignalBlocksAdvertising());
-    const existing = readAdvertisingConsent(consentVersion);
-    if (existing?.choice) {
-      setChoice(existing.choice);
-    }
     const onConsent = (event: Event) => {
       const detail = (event as CustomEvent<{ choice?: AdvertisingConsentChoice }>).detail;
       if (detail?.choice) {
